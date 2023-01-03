@@ -7,13 +7,16 @@
         Опис: існує загальний <i>interface</i> під іменем
         <span class="function-name">FileManager</span>
         який задає необхідний набір функціоналу для роботи з файловою системою та файлами.
+
         Реалізацію цього функціоналу здійснює клас
         <span class="function-name">LocalFileManager</span>,
         котрий забезпечує роботу з локальною файловою системою.
+
         Файли обох класів находяться по шляху:
-        <b>app/Helpers/</b>.
+        <span class="variable-name">app/Helpers/</span>.<br><br>
+
         Даний юніт-тест перевіряє роботу безпосередньо класу
-        <span class="function-name">LocalFileManager</span>.
+        <span class="file-name">LocalFileManager</span>
     </p>
     <hr><br><br>
 

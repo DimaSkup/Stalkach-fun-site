@@ -2,7 +2,6 @@
 
 namespace Tests\Unit\Models;
 
-use App\Helpers\Utils;
 use App\Models\Mod;
 use App\Models\ModRating;
 use App\Models\ModReview;
@@ -26,6 +25,7 @@ class ModReviewsTest extends TestCase
 		$this->assertNull($modReview->author); // an author by default is null (for cases when the author of the review was deleted)
 	}
 
+	
 	// can we set/get the text attribute of the mod review?
 	public function test_mod_review_set_and_get_text(): void
 	{
@@ -42,6 +42,7 @@ class ModReviewsTest extends TestCase
 		$this->assertNotEmpty($modReview->text);
 		$this->assertNotEquals($modReview->text, $prevText); // assert that we really changed the text attribute
 	}
+
 
 	// can we set/get the likes attribute of the mod review?
 	public function test_mod_review_set_and_get_likes(): void

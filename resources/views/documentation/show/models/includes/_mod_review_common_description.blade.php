@@ -16,23 +16,23 @@
         <img src="{{ asset($pathToImages . "mod_review.png") }}" width="320" alt="mod_review">
 
         <p>
-            Має відношення з:
+            Модель ModReview відношення з:
         <ul>
             <li>
                 <a href="{{ route('documentation.show', ['path' => "models.mod"]) }}">
-                    модифікацією
+                    модифікацією (model Mod)
                 </a>
             </li>
 
             <li>
                 <a href="{{ route('documentation.show', ['path' => "models.mod-rating"]) }}">
-                    оцінкою модифікації
+                    оцінкою модифікації (model ModRating)
                 </a>
             </li>
 
             <li>
                 <a href="{{ route('documentation.show', ['path' => "models.user"]) }}">
-                    автором модифікації
+                    автором модифікації (model User)
                 </a>
             </li>
         </ul>
