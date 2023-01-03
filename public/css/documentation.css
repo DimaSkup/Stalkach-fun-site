@@ -1,0 +1,112 @@
+/* Стилі база-кавун */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #152232;
+    color: white;
+}
+
+/* Стилі для посилань */
+a {
+    color: #f2b037;
+}
+
+/* стилі для кнопки сколлу догори */
+.scroll-up-parent {
+    z-index: 10;
+}
+
+.scroll-up-parent button {
+    background-color: #fff07c;
+    color: black;
+    border: 1px black;
+    padding: 5px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    border-radius: 70%;
+
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+
+    transition: all 0.2s ease;
+}
+
+.scroll-up-parent button:hover {
+    background-color: white;
+}
+
+.scroll-up-parent button:active {
+    background-color: #f2b037;
+    transform: translateY(5px);
+}
+
+
+
+/* Стилі для імен файлів */
+.file-name, .property {
+    color: #fff07c;
+}
+
+/* Стилі для імен функцій */
+.function-name {
+    font-family: "Monospace";
+    color: #f5e6ce;
+    background: #213652; /*#294568;*/
+}
+
+/* Стилі для параметрів та результатів функцій */
+.variable-name {
+    color: #8DD6F0;
+}
+
+/* якщо ми хочемо додати ОДИН рядок опису чогось, але з відступом зліва*/
+.description-line {
+    padding: 10px;
+}
+
+/* стилі для крапки перед елементом списку ul*/
+ul > li::marker {
+    font-size: 25px;
+}
+
+img {
+    width: 600px;
+}
+
+
+/* для випадаючого меню (drop-down menu) */
+.drop-down-list > .drop-down-list-content {
+    display: none;
+}
+
+.drop-down-list.open > .drop-down-list-content {
+    display: block;
+}
+
+.drop-down-list
+{
+    padding-left: 35px;
+}
+
+.drop-down-list > .title::before {
+    font-size: 22px;
+    content: '▶ ';
+    color: #f2b037;
+}
+
+.drop-down-list.open > .title::before {
+    content: '▼ ';
+}
+
+.sub-list {
+    padding-left: 30px;
+}
+
+.sub-list > .title::before {
+    font-size: 15px;
+    color: #abddff;
+}

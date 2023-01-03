@@ -1,0 +1,33 @@
+.intro-section {
+  background: $dark-background;
+  padding: 115px 0;
+}
+
+.text-box {
+  .top-meta {
+    font-weight: 500;
+    margin-bottom: 20px;
+    a {
+      color: $primary;
+    }
+  }
+  h3 {
+    margin-bottom: 40px;
+  }
+  p {
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-bottom: 35px;
+    line-height: 2rem;
+  }
+  .read-more {
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-style: italic;
+    color: #fff;
+    img {
+      margin-left: 13px;
+    }
+  }
+}

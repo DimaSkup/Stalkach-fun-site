@@ -1,0 +1,149 @@
+///////////////////////
+//// FEATURED CAROUSEL
+//////////////////////
+
+.featured-carousel {
+  position: relative;
+  margin-bottom: 40px;
+
+  .splide__slide {
+    height: 30vw;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+
+  ///////////////////////
+  //// TYPES OF SLIDE
+  //////////////////////
+
+  .hero-slide {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 40px 50px;
+
+    b {
+      position: absolute;
+      top: 20px;
+      left: 40px;
+      font-family: $input-font-family;
+      font-size: 13rem;
+      font-style: normal;
+      font-weight: 800;
+      text-transform: uppercase;
+      opacity: .5;
+      color: #747474;
+    }
+
+    .hero-image {
+      position: absolute;
+      right: 20px;
+      top: 0;
+      height: 100%;
+    }
+
+    .hero-post {
+      display: flex;
+      max-width: 70%;
+      z-index: 1;
+
+      h2, h3, h4, h5, h6 {
+        font-style: normal;
+        font-size: 1.4rem;
+        margin-top: 0;
+      }
+
+      .text {
+        margin-left: 20px;
+      }
+
+      p {
+        margin: 20px 0;
+      }
+    }
+
+    .thumb-img {
+      max-width: 250px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &--type1 {
+      b {
+        top: 10px;
+      }
+    }
+
+    &--type2 {
+      justify-content: flex-end;
+
+      b {
+        top: 0;
+        right: 40px;
+        left: inherit;
+      }
+
+      .hero-image {
+        top: 40px;
+        left: 10px;
+      }
+    }
+
+    &--type3 {
+      align-items: flex-start;
+
+      b {
+        top: inherit;
+        bottom: 0;
+      }
+    }
+
+    @include max-lg {
+      b {
+        font-size: 10rem;
+      }
+    }
+
+    @include max-md {
+      align-items: center;
+
+      b {
+        top: 10px;
+        display: none;
+      }
+
+      .hero-post {
+        h2, h3, h4, h5, h6 {
+          font-size: 1rem;
+        }
+
+        p {
+          margin: 5px 0 10px;
+        }
+      }
+    }
+
+    @include max-sm {
+      .hero-post {
+        max-width: 100%;
+      }
+
+      .hero-image {
+        opacity: .5;
+      }
+    }
+
+    @include max-xs {
+      padding: 20px;
+      height: 50vw;
+
+      .hero-post p {
+          display: none;
+      }
+    }
+  }
+}

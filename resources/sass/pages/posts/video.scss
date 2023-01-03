@@ -1,0 +1,19 @@
+#post-video {
+  .video-frame {
+    height: 560px;
+  }
+
+  .read-time {
+    display: none;
+  }
+
+  .post-sidebar .tags {
+    margin-bottom: 0;
+  }
+
+  @include max-md {
+    .video-frame {
+      height: 300px;
+    }
+  }
+}

@@ -1,0 +1,251 @@
+@import "../variables";
+@import "../components/mixins";
+
+#auth {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1000;
+  background: $background;
+  color: $text-alt;
+  transform: translateY(-100%);
+  transition: 0.7s;
+  overflow: hidden;
+
+  &.active {
+    transform: translateY(0%);
+  }
+
+  @include max-md {
+    display: block;
+  }
+
+  @include max-md {
+    overflow-y: auto;
+  }
+
+  .left-side, .right-side {
+    width: 50%;
+    height: 100%;
+    transition: 1s width;
+  }
+
+  .left-side {
+    position:relative;
+
+    &::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      filter: none;
+      background-size: cover;
+      background: url('../../img/bloodsucker.jpeg') 50% 50%;
+    }
+
+    &.security_minimum::before {
+      filter: url(#pixelate_minimum);
+    }
+
+    &.security_lite::before {
+      filter: url(#pixelate_lite);
+    }
+
+    &.security_medium::before {
+      filter: url(#pixelate_medium);
+    }
+
+    &.security_strong::before {
+      filter: url(#pixelate_strong);
+    }
+
+    &.security_safe::before {
+      filter: url(#pixelate_safe);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @include max-md {
+      display: none;
+    }
+  }
+
+  .right-side {
+    position: relative;
+    overflow-y: auto;
+    background: $background;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+
+    @include max-md {
+      width: 100%;
+    }
+
+    @include max-sm {
+      padding: 0;
+    }
+  }
+
+  form.login {
+    width: 100%;
+    height: 100%;
+    border: 1px solid $text-gray;
+    padding: 20px 60px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    transition: .5s;
+    opacity: 0;
+
+    .title {
+      display: block;
+      font-size: 1.5em;
+      text-align: center;
+      color: #424242;
+      //margin-bottom: 30px;
+    }
+
+    .input {
+      margin-bottom: 30px;
+      width: 100%;
+
+      input {
+        display: block;
+        width: 100%;
+        padding: 10px;
+      }
+    }
+
+    .submit, .create {
+      display: block;
+      width: 100%;
+      font-size: 1em;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      line-height: 1em;
+      padding: 14px;
+    }
+
+    .submit {
+      margin-top: 30px;
+    }
+
+    .social-signup {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 10px;
+
+      a {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+
+      .socicon-steam, .socicon-google {
+        margin-right: 10px;
+      }
+    }
+
+    .forgot-password {
+      background: none;
+      border: none;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: #424242;
+      transition: 0.3s;
+
+      &:hover {
+        color: $subtext;
+      }
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    ul li::before {
+      content: "\2622";
+      color: $primary;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -19px;
+    }
+  }
+
+  // Close button
+  .close-wrapper {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 1001;
+  }
+
+  .close {
+    width: 50px;
+    height: 50px;
+    transition: 0.3s;
+    position: relative;
+
+    &:hover {
+      background: $text-gray;
+    }
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 40px;
+      color: #3e3e3e;
+      border: none;
+      text-shadow: none;
+    }
+  }
+
+  form.registration {
+    opacity: 0;
+    transition: .5s;
+
+    .input {
+      margin-bottom: 30px;
+    }
+
+    .goto-login {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+
+  &.registration-flow {
+    .left-side {
+      width: 0;
+    }
+
+    .right-side {
+      width: 100%;
+    }
+  }
+
+  form.show {
+    opacity: 1;
+  }
+}

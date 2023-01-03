@@ -1,0 +1,118 @@
+/********* TABS ***********/
+.nav-tabs {
+  .nav-link {
+    padding: 17px 0;
+    width: 100%;
+    background: transparent;
+    color: $navigation-color;
+    transition: .5s;
+
+    .material-icons {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      border-right: 1px solid $hr-color;
+    }
+
+    &.active {
+      color: $primary;
+      background: transparent;
+      border-bottom: 3px solid;
+      border-color: $primary;
+      .material-icons {
+        color: $primary;
+      }
+    }
+
+    &:hover, &:focus {
+      background: transparent;
+      border-bottom: 3px solid $navigation-hover-color;
+      .material-icons {
+        color: $navigation-hover-color;
+      }
+    }
+  }
+
+  .nav-item:last-of-type .nav-link .material-icons {
+    border-right: 1px solid transparent;
+  }
+}
+
+/******** DROPDOWN ********/
+.dropdown-menu {
+  border-radius: 0;
+  background: #292929;
+
+  &>li:first-child .dropdown-item,
+  &>li:last-child .dropdown-item {
+    border-radius: 0;
+  }
+
+  .dropdown-item {
+    color: white;
+    &:hover {
+      background: #434343;
+    }
+
+    &.with-icon {
+      display: flex;
+      align-items: center;
+
+      .icon {
+        width: 1em;
+        height: 1em;
+
+        img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+
+        .material-icons {
+          font-size: 1em;
+        }
+      }
+
+      .title {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .dropdown-item.active {
+    background: #434343;
+    position: relative;
+    padding-left: 40px;
+
+    &:before {
+      font-family: "Material Icons", serif;
+      content: "\e876";
+      line-height: normal;
+      position: absolute;
+      top: 13px;
+      left: 20px;
+    }
+  }
+}
+
+/******** ACCORDION ********/
+.accordion .accordion-item {
+  border-radius: 0;
+  background: #292929;
+  color: $text-color;
+  .accordion-button {
+    border-radius: 0;
+    background: #292929;
+    color: $text-color;
+
+    &:not(.collapsed):after {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffe661'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z'/%3E%3C/svg%3E")
+    }
+  }
+}
+
+
+main .splide__track--nav > .splide__list > .splide__slide.is-active {
+  border: 3px solid $light-background;
+}

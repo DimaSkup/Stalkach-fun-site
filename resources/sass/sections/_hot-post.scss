@@ -1,0 +1,40 @@
+.featured-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-bg {
+  width: calc(50% - 156px);
+  float: left;
+  height: 100%;
+  left: 0;
+  right: 0;
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+}
+
+.featured-box {
+  float: right;
+  width: calc(50% + 156px);
+  background: #fff;
+  padding: 100px 50px 130px 79px;
+  .text-box {
+    max-width: 810px;
+    .top-meta {
+      color: #68647d;
+    }
+    h3 {
+      font-size: 60px;
+      max-width: 100%;
+      color: $text-dark;
+    }
+    p {
+      font-size: 16px;
+      color: $text-gray;
+    }
+  }
+  .text-box .read-more {
+    color: $text-dark;
+  }
+}

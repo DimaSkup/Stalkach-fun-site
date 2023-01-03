@@ -1,0 +1,36 @@
+#sign-up {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.sign-up__container {
+  position: relative;
+}
+
+.sign-up__layer {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+.sign-up__layer.sky {
+  z-index: -10;
+}
+
+.sign-up__layer.sky .sky-block {
+  background: url(/images/cloud.png?010c1c0492b0a0241d421acc60c1c63e) no-repeat;
+  background-size: 100%;
+  width: 500px;
+  height: 500px;
+  transform: perspective(12px) rotateX(0.1deg);
+}
+
+.sign-up__layer.image {
+  background: url(/images/pripyat.png?0555a02e923c452005a94f13d5c1dc29);
+  background-size: cover;
+  z-index: -5;
+}
+

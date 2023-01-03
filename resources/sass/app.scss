@@ -1,0 +1,58 @@
+// Libs
+//@import '~bootstrap/scss/bootstrap';
+@import "~normalize.css";
+@import '~socicon/css/socicon';
+@import '~mdb-ui-kit/css/mdb.min.css';
+@import "~material-icons";
+
+// Vars
+@import "variables";
+
+// Local Components
+@import "components/mixins";
+@import "components/animations";
+@import "components/fonts";
+@import "components/text";
+@import "components/blocks";
+@import "components/inputs";
+@import "components/rewrite_mdb";
+@import "components/structure";
+@import "components/user";
+
+// Parts
+@import "global";
+
+@import "includes/aside";
+@import "includes/header";
+@import "includes/footer";
+@import "includes/preloader";
+@import "includes/search";
+
+// Sections
+@import "sections/video-modal";
+@import "sections/posts-intro";
+@import "sections/newsletter";
+@import "sections/hot-post";
+@import "sections/featured-slider";
+@import "sections/support-ukraine";
+
+// New theme
+@import "style";
+
+// Pages
+@import "pages/posts/common";
+@import "pages/posts/blog";
+@import "pages/posts/casual";
+@import "pages/posts/video";
+@import "pages/posts/gallery";
+@import "pages/posts/guide";
+@import "pages/media";
+
+@import "pages/mods";
+@import "pages/mods-index";
+@import "pages/errors";
+//@import "pages/login";
+//@import "pages/landing";
+//@import "pages/auth";
+//@import "pages/sign-up";
+//@import "pages/media";

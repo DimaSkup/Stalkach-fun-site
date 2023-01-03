@@ -1,0 +1,40 @@
+@import "../variables";
+
+#sign-up {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.sign-up {
+  &__container {
+    position: relative;
+  }
+
+  &__layer {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+
+    &.sky {
+      z-index: -10;
+
+      .sky-block {
+        background: url("../../img/signup/cloud.png") no-repeat;
+        background-size: 100%;
+        width: 500px;
+        height: 500px;
+        transform: perspective(12px) rotateX(0.1deg);
+      }
+    }
+
+    &.image {
+      background: url("../../img/signup/pripyat.png");
+      background-size: cover;
+      z-index: -5;
+    }
+  }
+}
+

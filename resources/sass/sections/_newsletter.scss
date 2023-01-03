@@ -1,0 +1,31 @@
+.newsletter-section {
+  padding: 108px 0 95px;
+  text-align: center;
+  @extend .gradient-bg;
+  h2, h3, h4, h5, h6 {
+    text-align: center;
+    font-size: 48px;
+    color: #fff;
+    font-weight: 700;
+    font-style: italic;
+    text-transform: uppercase;
+    margin-bottom: 73px;
+  }
+}
+
+.newsletter-form {
+  padding-left: 56px;
+  input {
+    font-size: 14px;
+    font-weight: 700;
+    font-style: italic;
+    color: #fff;
+    width: 787px;
+    border: none;
+    border-bottom: 2px solid #9b91a6;
+    background: none;
+    height: 63px;
+    margin-right: 26px;
+    padding: 0 20px;
+  }
+}

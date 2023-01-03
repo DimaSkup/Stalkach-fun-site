@@ -1,0 +1,62 @@
+
+/***************
+**** Colors ****
+***************/
+$background: #151515;
+$dark-background: #050505;
+$light-background: #1e1e1e;
+
+// THEME
+$primary: #ffe661;
+$primary-alt: #c3af42;
+$primary-shadow: 0 0 9px 3px rgba(201, 185, 48, 0.5);
+$dark-shadow: 0 0 9px 3px rgba(0, 0, 0, 0.5);
+$secondary: #6c757d;
+
+// Text
+$hr-color: #292929;
+$text-color: #c1c1c1;
+$text-gray: #3e3e3e;
+$text-dark: #000000;
+
+$navigation-color: #797979;
+$navigation-hover-color: #ffffff;
+$title-color: #ffffff;
+$link-color: #ffffff;
+$link-hover-color: white;
+
+$gradient-background: linear-gradient(90deg, #151515 0%, #1d1c1c 100%);
+$gradient-mirrored-background: linear-gradient(270deg, #151515 0%, #1d1c1c 100%);
+$gradient-with-alpha: linear-gradient(90deg, rgba(21,21,21,1) 43%, rgba(21,21,21,0.9) 60%, rgba(21,21,21,0) 100%);
+$gradient-primary: linear-gradient(90deg, #ffe661 0%, #c3af42 100%);
+
+// For refactoring
+$block-background: #232222;
+$menuItems: white;
+$text: white;
+$text-alt: #afafaf;
+$text-mutted: #3e3e3e;
+$subtext: #858585;
+
+
+$red: #DC3545;
+$yellow: #FFC107;
+$blue: #0D6EFD;
+$green: #198754;
+
+/**************
+**** FONTS ****
+**************/
+$main-font-family: 'Roboto', sans-serif;
+$input-font-family: 'Montserrat', sans-serif;
+$navigation-font-family: 'Proxima Nova', sans-serif;
+
+$stalker-font: 'RusBoycott', sans-serif;
+$title-font: 'Anton', sans-serif;
+$console-fonts: 'Menlo', 'Consolas', 'Monaco', 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, serif;
+
+// Header
+$sidebar-z-index: 100;
+$header-z-index: 10;
+$search-modal: 300;
+$video-modal: 200;

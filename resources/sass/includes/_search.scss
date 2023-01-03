@@ -1,0 +1,280 @@
+@import "../variables";
+@import "../components/mixins";
+
+#search {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: $search-modal;
+  background: $background;
+  color: $text-alt;
+  transform: translateY(-100%);
+  transition: 0.7s;
+  overflow: hidden;
+
+  &.active {
+    transform: translateY(0%);
+  }
+
+  @include max-md {
+    display: block;
+  }
+
+  @include max-md {
+    overflow-y: auto;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  ul li::before {
+    content: "\2622";
+    color: $primary;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -19px;
+  }
+
+  .left-side, .right-side {
+    width: 50%;
+    padding: 30px 50px;
+
+    @include max-md {
+      width: 100%;
+    }
+  }
+
+  .left-side {
+    background: $block-background;
+  }
+
+  .right-side {
+    overflow-y: auto;
+    background: $background;
+  }
+
+  .search-header {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .logo-wrapper {
+    position: relative;
+
+  }
+
+  .logo {
+    margin-bottom: 0;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+
+    span {
+      @include max-md {
+        display: block;
+      }
+    }
+  }
+
+  .close {
+    width: 50px;
+    height: 50px;
+    transition: 0.3s;
+    position: relative;
+
+    &:hover {
+      background: $text-gray;
+    }
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 40px;
+      color: #3e3e3e;
+      border: none;
+      text-shadow: none;
+    }
+  }
+
+  #search-form {
+    height: calc(100% - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .search-container {
+    position: relative;
+    margin-bottom: 40px;
+
+    button {
+      background: none;
+      border: none;
+      display: inline-flex;
+      position: absolute;
+      left: 8px;
+      top: 20px;
+
+      color: #3e3e3e;
+
+      span {
+        font-size: 40px;
+      }
+    }
+  }
+
+  input[type='search'] {
+    background: none;
+    border: none;
+    border-bottom: 3px solid #3e3e3e;
+    padding: 20px 20px 20px 60px;
+    display: block;
+    width: 100%;
+    color: $text;
+    font-size: 2em;
+    transition: 0.3s;
+
+    &::placeholder {
+      color: $text-gray;
+      text-transform: none;
+    }
+
+    &:focus {
+      border-bottom: 3px solid $text-alt;
+    }
+  }
+
+  .tags-container {
+    .title {
+      margin-bottom: 10px;
+    }
+  }
+
+  .popular-tags {
+    display: block;
+  }
+
+  .section-title {
+    color: $text-mutted;
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .section-wrapper {
+    display: flex;
+
+    @include max-lg {
+      display: block;
+    }
+  }
+
+  .left-content-side {
+    width: 50%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+
+    @include max-lg {
+      width: 100%;
+    }
+
+    & > a {
+      padding: 20px;
+      background: $block-background;
+      box-shadow: 4px 4px 8px 0 #0a0a0a;
+      & .title {
+        font-weight: 700;
+        font-size: 0.9em;
+      }
+
+      .description {
+        font-size: 0.8em;
+      }
+    }
+  }
+
+  .right-content-side {
+    width: 50%;
+    padding-left: 30px;
+    margin-left: 20px;
+
+    @include max-lg {
+      width: 100%;
+      margin-top: 20px;
+      margin-left: 0;
+    }
+
+    & > li {
+      margin-bottom: 20px;
+    }
+
+    .title {
+      font-weight: 700;
+      font-size: 0.9em;
+      color: $text;
+      display: inline;
+    }
+
+    .description {
+      font-size: 0.8em;
+      color: $text-alt;
+    }
+  }
+
+  .latest-posts {
+    margin-top: 40px;
+    position: relative;
+  }
+
+  .see-more {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    font-size: 0.8em;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $primary-alt;
+    transition: 0.3s;
+
+    &:hover {
+      color: $primary;
+    }
+
+    & span {
+      font-size: 0.8em;
+    }
+  }
+
+  .posts {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+
+    @include max-lg {
+      grid-template-columns: 1fr;
+    }
+
+    & > a {
+      .title {
+        margin-top: 10px;
+        font-size: 1em;
+        font-weight: 700;
+        color: $text;
+      }
+
+      .description {
+        font-size: 0.9em;
+      }
+    }
+  }
+}

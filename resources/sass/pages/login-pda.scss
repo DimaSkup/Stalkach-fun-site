@@ -1,0 +1,239 @@
+@import "../variables";
+
+#auth {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+
+  // Layers
+  .scene video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1;
+    transform: translate(-49.3%, -45.6%);
+  }
+
+  .blur {
+    z-index: 3;
+    backdrop-filter: blur(20px);
+    animation: fadeInBlur 7s;
+  }
+
+  .pda {
+    img.device {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: 5;
+      transform: translate(-49.3%, -45.6%);
+      animation: fadeInPda 5.8s;
+    }
+
+    img.indicator {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 100px;
+      height: 100px;
+      z-index: 6;
+      transform: translate(-294%, -226%);
+      mix-blend-mode: lighten;
+      animation: indicatorFlicker 7s linear infinite;
+      animation-delay: 5.8s;
+      opacity: 0;
+
+      &.error {
+        filter: invert(0) sepia(1) saturate(5) hue-rotate(341deg);
+      }
+    }
+  }
+
+  .pda-bg {
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .glitch {
+      position: relative;
+      width: 502px;
+      height: 306px;
+      overflow: hidden;
+      animation: fadeInPdaInterface 1s;
+      animation-delay: 5.8s;
+      opacity: 0;
+    }
+
+    .glitch__img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 502px;
+      height: 306px;
+      background: url("../../img/auth/pda-interface.png") transparent no-repeat 50% 0;
+      background-size: cover;
+      transform: translate3d(0, 0, 0);
+
+      &:nth-child(n + 2) {
+        opacity: 0;
+      }
+
+      &:nth-child(n + 2) {
+        animation-duration: 4s;
+        animation-delay: 2s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      }
+
+      &:nth-child(2) {
+        background-color: transparent;
+        background-blend-mode: normal;
+        animation-name: glitch-anim-1;
+      }
+
+      &:nth-child(3) {
+        background-color: transparent;
+        background-blend-mode: normal;
+        animation-name: glitch-anim-2;
+      }
+
+      &:nth-child(4) {
+        background-color: #60555d;
+        background-blend-mode: overlay;
+        animation-name: glitch-anim-3;
+      }
+
+      &:nth-child(5) {
+        background-color: #4d464e;
+        background-blend-mode: overlay;
+        animation-name: glitch-anim-flash;
+      }
+    }
+  }
+
+  .interface {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    position: absolute;
+
+    .interface-bg {
+      width: 502px;
+      height: 306px;
+      background: url("../../img/auth/pda-bg.png") no-repeat 50% 0;
+      background-size: cover;
+      animation: fadeInPda 6.8s;
+      border-radius: 6px 8px;
+    }
+
+    .interface-form {
+      transform: perspective(12px) rotateX(0.1deg);
+      padding: 20px 75px;
+    }
+
+    .typewriter {
+      color: #d8d0d6;
+      display: inline-block;
+      font-family: monospace;
+      overflow: hidden;
+      white-space: nowrap;
+      margin: 20px auto 0;
+      letter-spacing: .15em;
+      animation: typing 3.5s steps(40, end);
+      animation-delay: 6.7s;
+    }
+
+    .input {
+      display: block;
+      width: 100%;
+      height: 40px;
+      background: rgb(56 45 53 / 70%);
+      border: 1px solid #685d65;
+      box-sizing: border-box;
+      letter-spacing: 0.2rem;
+      color: #d8d0d6;
+      font-size: 14px;
+      font-family: monospace;
+      padding: 7.5px;
+
+      animation: indicatorFlicker 1.5s;
+      animation-delay: 6.7s;
+
+      &:focus {
+        outline: none;
+        background: rgb(56 45 53 / 90%);
+        border-radius: 0;
+        border: 2px solid #d8d0d6;
+      }
+    }
+
+    .btn {
+      font-family: monospace;
+      background: rgb(248 230 67 / 80%);
+      animation: indicatorFlicker 1.5s;
+      animation-delay: 6.7s;
+      border: 1px solid #d8d0d6;
+    }
+  }
+}
+
+.auth {
+  &__container {
+    position: relative;
+  }
+
+  &__layer {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+  }
+}
+
+//.title {
+//  font-size: 42px;
+//  line-height: normal;
+//  background: -webkit-linear-gradient(#ffeb01, #ff0101);
+//  -webkit-background-clip: text;
+//  -webkit-text-fill-color: transparent;
+//  position: absolute;
+//  text-transform: uppercase;
+//  top: 50%;
+//  transform: translateY(-50%);
+//  padding: 0 20px;
+//  margin: 0;
+//  left: 0;
+//  right: 0;
+//  z-index: 1;
+//  text-align: center;
+//  animation-name: glitch-anim-text;
+//  animation-duration: 4s;
+//  animation-timing-function: linear;
+//  animation-iteration-count: infinite;
+//  animation-delay: calc(2s + 4s * 0.2);
+//
+//  @media only screen and (min-width: 768px) {
+//    font-size: 60px
+//  }
+//
+//  @media only screen and (min-width: 992px) {
+//    font-size: 80px
+//  }
+//
+//  @media only screen and (min-width: 1170px) {
+//    font-size: 100px
+//  }
+//}
+
+

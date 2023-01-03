@@ -1,0 +1,94 @@
+/*
+// ---------------------------------------------------------
+//   STYLES FOR THE PAGE OF CREATING OF MODIFICATIONS
+// ---------------------------------------------------------
+*/
+
+/******************************************************************
+                      INPUT BLOCKS
+*******************************************************************/
+.data-form-input-container .error {
+    border: 2px solid red;
+    border-radius: 4px;
+    color: red;
+}
+
+/* Each error block is hidden if it hasn't got any error message */
+.hide {
+    display: none;
+}
+
+
+/***************************************************
+   ADD A DOWNLOAD SOURCE BUTTON AND DROP-DOWN MENU
+****************************************************/
+/* The container <div> is needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* The chosen parameter button */
+.dropbtn {
+    display: block;
+    color:#444;
+    border:1px solid #CCC;
+    background:#DDD;
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+    cursor:pointer;
+    vertical-align:middle;
+    min-width: 160px;
+    padding: 5px;
+    text-align: center;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content p {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor:pointer;
+    margin: 0 0;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content p:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #138496;}
+
+
+
+/******************************************************************
+                 INPUT FIELDS FOR DOWNLOAD LINKS
+*******************************************************************/
+
+/* a block which contain the input field and remove button */
+[data-download="inputs"] div.hide {
+    display: none;
+}
+
+/* an input field */
+[data-download="inputs"] div input
+{
+    min-width: 75%;
+}
+
+/* an input field placeholder */
+[data-download="inputs"] input::placeholder {
+    color: grey;
+}

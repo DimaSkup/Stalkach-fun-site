@@ -1,0 +1,22 @@
+#resources .resources__content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media screen and (max-width: 1024px) {
+  #resources .resources__content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #resources .resources__content {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+#resources .resources-media {
+  background-size: cover;
+  height: 300px;
+}
+

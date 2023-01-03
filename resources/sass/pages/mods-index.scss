@@ -1,0 +1,201 @@
+.mods, .browse-mods {
+  .splide__slide img, .splide__slide video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .featured-mods {
+    position: relative;
+    height: 700px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .section-content {
+      position: relative;
+      height: 100%;
+      background: linear-gradient(0, rgba(21 21 21 / 1) 0%, rgba(21 21 21 / 0) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .header {
+      padding: 40px;
+    }
+
+    .info-wrapper {
+      display: flex;
+    }
+  }
+
+  .bg-carousel {
+    background-color: $background;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    overflow: hidden;
+
+    .splide__track {
+      height: 100%;
+    }
+
+    .splide__slide {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .info-carousel {
+    width: 50%;
+    padding: 0 40px;
+  }
+
+  .thumbnail-carousel-wrapper {
+    width: 50%;
+    display: flex;
+    align-items: flex-end;
+
+    .splide__track--nav > .splide__list > .splide__slide.is-active {
+      border: 2px solid $primary;
+    }
+  }
+
+  .info {
+    margin-top: 10px;
+  }
+
+  .title {
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .subinfo {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    font-family: $navigation-font-family;
+    color: $navigation-color;
+    margin-top: 5px;
+
+    img {
+      width: 0.8rem;
+      height: 0.8rem;
+      margin-right: 5px;
+    }
+  }
+
+  .cover {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .rating {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 5px 10px;
+    color: $text-dark;
+    background: $primary;
+  }
+
+  .mod-item {
+    position: relative;
+
+    .metadata {
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      width: 100%;
+      padding: 5px 10px;
+      display: flex;
+      justify-content: space-between;
+      height: fit-content;
+      background: linear-gradient(0deg,
+          rgba(41, 41, 41, 0) 0%,
+          rgba(41, 41, 41, 1) 100%
+      );
+
+      span {
+        font-size: 16px;
+        text-shadow: 0.5px 0.5px 1px black;
+      }
+
+      .game img {
+        width: 14px;
+        height: 14px;
+      }
+
+      .left-side {
+        display: flex;
+      }
+    }
+  }
+
+  .top-mods {
+    background: $background;
+    padding: 20px 0;
+  }
+
+  .top-mods-carousel {
+    margin-bottom: 40px;
+
+    .splide__arrows {
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      top: -2.4rem;
+      right: 0;
+      width: 4rem;
+    }
+
+    .splide__arrow {
+      position: initial;
+      background: none;
+
+      &--next, &--prev {
+        color: $navigation-color;
+        left: unset;
+        right: unset;
+        top: unset;
+        transform: unset;
+        transition: .3s;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+  }
+
+  .mods-filters {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 1rem;margin-bottom: 40px;
+  }
+
+  .mod-item {
+    width: 100%;
+  }
+}
+
+.browse-mods {
+  padding: 20px;
+}

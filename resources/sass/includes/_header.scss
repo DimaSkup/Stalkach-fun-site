@@ -1,0 +1,21 @@
+// Top panel
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: $header-z-index;
+
+  .search {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+
+    span {
+      position: absolute;
+      font-size: 18px;
+      color: #585858;
+      top: 10px;
+      left: 10px;
+    }
+  }
+}

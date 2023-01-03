@@ -1,0 +1,191 @@
+///////////////////////
+////// HEADERS ///////
+//////////////////////
+
+h1, h2, h3, h4, h5, h6 {
+  display: block;
+  color: $title-color;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-style: italic;
+  text-align: left;
+}
+
+h1.alt, h2.alt, h3.alt, h4.alt, h5.alt, h6.alt {
+  color: $text-gray;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-style: normal;
+  text-align: left;
+}
+
+///////////////////////
+////// CONTENT ///////
+//////////////////////
+
+blockquote {
+  position: relative;
+  padding-left: 1em;
+  border-left: 0.2em solid $primary;
+  font-family: $main-font-family, sans-serif;
+  font-size: 1.1em;
+  line-height: 1.5em;
+  font-weight: 300;
+
+  &:before, &:after {
+    font-family: 'Calibri', sans-serif;
+    color: $primary;
+    font-size: 34px;
+  }
+
+  &:before {content: '\201e'}
+  &:after {content: '\201c'}
+
+  cite {font-size: 70%; font-weight: 400; text-align:center; top:50%}
+  cite:before {content: ' \2015 '}
+}
+
+mark {
+  padding: 0.2em;
+  background-color: #5959593d;
+  color: $text-color;
+}
+
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+}
+
+hr {
+  border: none;
+  color: $hr-color;
+  background-color: $hr-color;
+  height: 1px;
+  margin: 25px 0;
+  opacity: 1;
+}
+
+img {
+  max-width: 100%;
+}
+
+///////////////////////
+/////// LINKS ////////
+//////////////////////
+
+@mixin anim-link {
+  color: $link-color;
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size .3s ease-in-out;
+
+  &:hover, &:focus {
+    color: $link-hover-color;
+    background-size: 100% 2px;
+  }
+
+  &.active {
+    background-image: linear-gradient(91deg, $primary, $primary-alt);
+    background-size: 100% 2px;
+  }
+
+  &:hover, a.link:focus, .link-block:hover .link-text {
+    background-size: 100% 2px;
+    transition: background-size .3s ease-in-out;
+  }
+}
+
+a {
+  color: $link-color;
+  transition: .3s;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  color: $link-hover-color;
+  text-decoration: none;
+  outline: none;
+}
+
+a.link, .link-text {
+  color: $link-color;
+  @include anim-link();
+}
+
+a.link-with-arrow {
+  display: inline-block;
+  position: relative;
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
+  text-align: left;
+  -webkit-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+  padding-right: 19px;
+  background-image: url("../../images/icons/double-arrow.svg");
+  background-repeat: no-repeat;
+  background-position: right -120% center;
+  background-size: 15px;
+  &:hover {
+    color: $primary-alt;
+    background-position: right center;
+  }
+}
+
+a.link-prev, a.link-next {
+  font-size: 0.8em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: $primary;
+  transition: 0.3s;
+
+  &:hover, &:focus {
+    color: $primary-alt;
+  }
+
+  &:after, &:before {
+    display: inline-block;
+    font-family: "Material Icons";
+    vertical-align: text-bottom;
+    line-height: 1.3;
+  }
+}
+
+a.link-next:after {
+  content: '\e037';
+}
+
+a.link-prev:before {
+  content: '\e037';
+  transform: rotate(180deg);
+}
+
+///////////////////////
+//////// TAGS ////////
+//////////////////////
+
+.popular-tag {
+  display: inline-block;
+  background: $primary;
+  color: black;
+  margin-right: 7px;
+  margin-bottom: 10px;
+  transition: all 0.3s;
+  font-size: 0.85em;
+  padding: 6px 14px 6px;
+
+  &:before {
+    content: "# ";
+    color: #a9973d;
+  }
+
+  &:hover, &:active {
+    background: $primary-alt;
+    color: black;
+  }
+}
