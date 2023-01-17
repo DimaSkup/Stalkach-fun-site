@@ -19,16 +19,27 @@ class ImageEditor
     // takes some image content and params to make a new image content with such properties
     public function createImageContentWithParams(string $fullPathToImage,
                                                  array $imageParams,
-                                                 string $extension = self::DEFAULT_EXTENSION): string
+                                                 string $extension = self::DEFAULT_EXTENSION)
+	: string  // returned type
     {
-        // check params
-        DevUtils::checkArguments($fullPathToImage, $imageParams);
+		try
+		{
+			// check params
+			DevUtils::checkArguments($fullPathToImage, $imageParams);
 
-        // make an image
-        return self::createImageContent($fullPathToImage,
-                                        $imageParams['width'],  // make a new image with such a width
-                                        $imageParams['height'], // and height
-                                        $extension);            // and extension
+			// make an image
+			return self::createImageContent($fullPathToImage,
+				$imageParams['width'],  // make a new image with such a width
+				$imageParams['height'], // and height
+				$extension);            // and extension
+
+		}
+		catch (\Exception $e)
+		{
+			dump("EXCEPTION:");
+			dump($e->getMessage());
+			dump("path to src image: $fullPathToImage");
+		}
     }
 
 
@@ -88,26 +99,26 @@ class ImageEditor
     // create an image resource from some image file by $pathToFile
     private static function createImageResource(string $pathToFile): \GdImage|bool
     {
-        $ext = pathinfo($pathToFile, PATHINFO_EXTENSION); // get an extension of the file
+		$ext = pathinfo($pathToFile, PATHINFO_EXTENSION); // get an extension of the file
 
-        switch ($ext) // according to the extension we create an image resource
-        {
-            // return an image resource or error
-            case 'bmp':
-                return imageCreateFromBmp($pathToFile);
-            case 'webp':
-                return imageCreateFromWebp($pathToFile);
-            case "jpg":
-            case "jpeg":
-                return imageCreateFromJpeg($pathToFile);
-            case "png":
-                return imageCreateFromPng($pathToFile);
-            case "gif":
-                return imageCreateFromGif($pathToFile);
-            default:
-                dump("wrong extension: $ext");
-                throw new \RuntimeException("there is an error during creation of an image resource");
-        }
+		switch ($ext) // according to the extension we create an image resource
+		{
+			// return an image resource or error
+			case 'bmp':
+				return imageCreateFromBmp($pathToFile);
+			case 'webp':
+				return imageCreateFromWebp($pathToFile);
+			case "jpg":
+			case "jpeg":
+				return imageCreateFromJpeg($pathToFile);
+			case "png":
+				return imageCreateFromPng($pathToFile);
+			case "gif":
+				return imageCreateFromGif($pathToFile);
+			default:
+				dump("wrong extension: $ext");
+				throw new \RuntimeException("there is an error during creation of an image resource");
+		}
     }  // createImageResource()
 
     // creates an image content (a string with image data) by its resource and extension

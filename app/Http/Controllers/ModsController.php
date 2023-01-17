@@ -72,8 +72,6 @@ class ModsController extends Controller
      */
     public function show(Mod $mod): View
     {
-
-
     	$isDevMode = false;
 
     	if ($isDevMode)
@@ -82,7 +80,7 @@ class ModsController extends Controller
     		$pathToShowTemplate = "mods.show.show"; // show a usual page of a single modification
 
         return view($pathToShowTemplate)
-            ->with('modification', $mod);
+            ->with('mod', $mod);
     }
 
     /**
@@ -131,10 +129,12 @@ class ModsController extends Controller
     {
         $mods = Mod::orderBy('created_at', "DESC")->limit(10)->get();
         $latestMods = Mod::orderBy('created_at', "DESC")->limit(10)->get();
+        $filteredMods = Mod::orderBy('created_at', "DESC")->limit(20)->get();
 
         return view('mods.index')->with([
             'latestMods' => $latestMods,
             'modsList' => $mods,
+			'filteredMods' => $filteredMods, // ATTENTION: this variable is needed just for temporal needs
         ]);
     }
 

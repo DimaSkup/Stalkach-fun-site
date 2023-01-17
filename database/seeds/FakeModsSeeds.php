@@ -22,9 +22,10 @@ use Illuminate\Http\File as HttpFile;
 
 class FakeModsSeeds extends Seeder
 {
-    private string $mainImagesDirPath;      // the path to mod main images directory
-    private array $screenshotsPathArray;    // the path to mod screenshots directory
-    private array $galleryVideoPathsArray;  // the path to mod gallery videos directory
+    private string $mainImagesDirPath;      // a path to mod fake main images directory
+	private string $screenshotsDirPath;     // a path to mod fake screenshots directory
+    private array $screenshotsPathArray;    // a path to mod fake screenshots images
+    private array $galleryVideoPathsArray;  // a path to mod gallery videos directory
 
     // fake video links
     private static string $defaultReviewVideoLink = "https://www.youtube.com/watch?v=OuHdnsF118U";
@@ -41,7 +42,8 @@ class FakeModsSeeds extends Seeder
 
         // get all the paths to the fake images
         $this->mainImagesDirPath = Utils::getFileTypeConfig(Mod::IMAGE_TYPE_MAIN)['fake'];   // storage path to the mod main images directory
-        $this->screenshotsPathArray = Storage::disk('storage_root')->allFiles($this->mainImagesDirPath);
+		$this->screenshotsDirPath = Utils::getFileTypeConfig(Mod::IMAGE_TYPE_SCREENSHOTS)['fake'];
+        $this->screenshotsPathArray = Storage::disk('storage_root')->allFiles($this->screenshotsDirPath);
 
         // get all the paths for the fake gallery videos
         $galleryVideosDirStoragePath = Utils::getFileTypeConfig(Mod::VIDEO_TYPE_GALLERY)['fake'];
@@ -62,20 +64,20 @@ class FakeModsSeeds extends Seeder
             $mainImageFilename = $modData->get('main_image_name');
             $screenshotsCount = 10;
 
-            // create an instance of Mod
+            // create an new instance of the Mod model
             $newMod = $this->createNewModObject($modData);
 
-            // make some relations
+            // make some EXTERNAL relations
             $newMod->author_id = $authorOfMod->id;
             $newMod->tags = $modData['tags'];                                      // relate tags to this modification
             $this->relateFakeImagesTo($newMod, $mainImageFilename, $screenshotsCount);   // relate images to this modification
             $this->relateFakeModReviewsTo($newMod);                               // relate mod reviews to this modification
-            $this->relateFakeVideosToModel($newMod, $trailerLink, $reviewLink);   // make relations between videos and this modification
+            //$this->relateFakeVideosToModel($newMod, $trailerLink, $reviewLink);   // make relations between videos and this modification
 
             $newMod->update(); // after all we need to update this new mod
 
             // ATTENTION: DROP IT LATER
-            //if ($index == 5)
+            //if ($index == 3)
             //   break;
         }
     } // run()
@@ -120,13 +122,13 @@ class FakeModsSeeds extends Seeder
         $screenshotsFiles = [];    // here we will place screenshots files
         for ($i = 0; $i < $screenshotsCount; $i++)
         {
-            $screenshotsFiles[] = $this->getRandImageFile(); // get screenshots files
+            $screenshotsFiles[] = $this->getRandImageFile(Mod::IMAGE_TYPE_SCREENSHOTS); // get screenshots files
         }
 
         $model->mainImage = $mainImageFile; // make a MAIN IMAGE relation
         $model->screenshots = $screenshotsFiles; // make a SCREENSHOTS relation
-        $model->boxartImage = $this->getRandImageFile(); // make a BOXART relation
-        $model->backgroundImage = $this->getRandImageFile(); // make a BACKGROUND relation
+        $model->boxartImage = $this->getRandImageFile(Mod::IMAGE_TYPE_BOXART); // make a BOXART relation
+        $model->backgroundImage = $this->getRandImageFile(Mod::IMAGE_TYPE_BACKGROUND); // make a BACKGROUND relation
 
         // set the file manager to the default disk state
         $this->fileManager->setDisk('public');
@@ -141,10 +143,14 @@ class FakeModsSeeds extends Seeder
         {
             ModReview::factory()
                      ->hasAuthor()           // set a random author
-                     ->hasMod($mod->id) // relate this modification to the modification review
+                     ->hasMod($mod->id)      // relate this modification to the modification review
                      ->hasModRating()        // set a random modification rating
                      ->getModel();
         }
+
+        // after creation of all the mod reviews we need to calculate the mod average rate
+		$this->updateAverageGradeOfMod($mod);
+
     }  // relateFakeModReviewsTo()
 
     // this function makes relations between videos and this model
@@ -162,11 +168,20 @@ class FakeModsSeeds extends Seeder
     //                                                                                 //
     // ------------------------------------------------------------------------------- //
 
-    // returns a File object of some random image
-    private function getRandImageFile(): HttpFile
+    // returns a File object of some random image;
+	// if we have some INTERNAL image type as parameter we convert a random image
+	// to necessary params
+    private function getRandImageFile(string $imageType = ""): HttpFile
     {
         $path = Arr::random($this->screenshotsPathArray);
-        return $this->fileManager->getFileByStoragePath($path);
+        $imageFile = $this->fileManager->getFileByStoragePath($path);
+
+        if ($imageType) // if we want to convert image to some particular type
+		{
+			$imageFile = $this->imageUploader->upload($imageFile, $imageType);
+		}
+
+		return $imageFile;
     }
 
     // sets the TRAILER VIDEO for this model
@@ -222,6 +237,23 @@ class FakeModsSeeds extends Seeder
             'id'      => $video->getId(),
         ]);
     } // getVideoPreviewImageAndId()
+
+	private function updateAverageGradeOfMod(Mod $mod)
+	{
+		$countOfModReviews = count($mod->modReviews);
+		$sumRateByAllReviews = 0;
+
+		foreach($mod->modReviews as $modReview)
+		{
+			$sumRateByAllReviews += $modReview->modRating->averageRating;
+		}
+
+		$averageRateByAllReviews = $sumRateByAllReviews / $countOfModReviews;
+		$roundedRate = round($averageRateByAllReviews, 1);
+
+		$mod->setAttribute('average_grade', $roundedRate);
+		$mod->update();
+	}
 
 
 

@@ -56,6 +56,70 @@ class Mod extends Model
         "hoc" => "hoc",
     ];
 
+    public const GAME_NAMES = [
+    	"soc" => "S.T.A.L.K.E.R: Shadow of Chernobyl",
+    	"cs" => "S.T.A.L.K.E.R: Clear Sky",
+		"cop" => "S.T.A.L.K.E.R: Call of Pripyat",
+		"hoc" => "S.T.A.L.K.E.R: Heart of Chornobyl",
+	];
+
+    public const GAME_ICO_DIR_PATH = "images/icons/games/";
+
+    public const MOD_FEATURES_LIST = [
+    	'story' => [
+    		'text'      => "With new story",
+			'icon_name' => "auto_stories",
+		],
+		'graphic' => [
+			'text'      => "Graphic improvements",
+			'icon_name' => "add_photo_alternate",
+		],
+		'bestsellers' => [
+			'text'      => "Bestsellers",
+			'icon_name' => "star_border",
+		],
+		'voice' => [
+			'text'      => "With voice acting",
+			'icon_name' => "mic",
+		],
+		'guns' => [
+			'text'      => "With new guns",
+			'icon_name' => "backpack",
+		],
+		'old_comp' => [
+			'text'      => "For old computers",
+			'icon_name' => "speed",
+		],
+	];
+
+    public const MOD_DIFFICULTIES_LIST = [
+    	'all' => [
+    		'text'       => "All difficulties",
+    		'icon_name'  => "emergency",
+			'icon_color' => "white",
+		],
+		'hard' => [
+			'text'       => "Hard difficult",
+			'icon_name'  => "trip_origin",
+			'icon_color' => "red",
+		],
+		'medium' => [
+			'text'       => "Medium difficult",
+			'icon_name'  => "trip_origin",
+			'icon_color' => "yellow",
+		],
+		'easy' => [
+			'text'       => "Easy difficult",
+			'icon_name'  => "trip_origin",
+			'icon_color' => "blue",
+		],
+		'novice' => [
+			'text'       => "For novices",
+			'icon_name'  => "trip_origin",
+			'icon_color' => "green",
+		],
+	];
+
     protected $dates = [
         'created_at',
         'updated_at',
@@ -74,6 +138,7 @@ class Mod extends Model
         'game',
         'views',
         'download_links',
+		'average_grade',
 
         'trailer_video_id',
         'review_video_id',
@@ -149,6 +214,22 @@ class Mod extends Model
     {
         return implode(' ', array_column($this->tags()->get()->all(), 'name'));
     }
+
+    // returns a full name of the basic game version
+    public function getBasicGameNameAttribute(): string
+	{
+		return self::GAME_NAMES[$this->game];
+	}
+
+	public function getAverageGradeAttribute(): string
+	{
+		return $this->attributes['average_grade'];
+	}
+
+	public function getSubscribersCountAttribute(): string
+	{
+		return -1;
+	}
 
 
 
@@ -250,6 +331,19 @@ class Mod extends Model
     {
         return Utils::getPathToDirByFileType(self::IMAGE_TYPE_MAIN);
     }
+
+	// returns a path to the ico of the basic game version (cop ico, cs ico, etc)
+    public static function getPathToIcoImageByKey(string $key): string
+	{
+		return asset(self::GAME_ICO_DIR_PATH . $key . ".ico");
+	}
+
+    // returns a path to the ico of the basic game version (cop ico, cs ico, etc)
+    public function getBasicGameIcoPathAttribute(): string
+	{
+		return self::getPathToIcoImageByKey($this->game);
+
+	}
 
 
 

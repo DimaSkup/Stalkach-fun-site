@@ -25,7 +25,7 @@ class ModReviewsTest extends TestCase
 		$this->assertNull($modReview->author); // an author by default is null (for cases when the author of the review was deleted)
 	}
 
-	
+
 	// can we set/get the text attribute of the mod review?
 	public function test_mod_review_set_and_get_text(): void
 	{

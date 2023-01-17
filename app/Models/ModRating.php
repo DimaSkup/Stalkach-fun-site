@@ -46,4 +46,18 @@ class ModRating extends Model
 
         return $grades;
     }
+
+    // returns an average rating for related modification
+	public function getAverageRatingAttribute(): float
+	{
+		$sumRate = 0;
+		$countOfGradesTypes = count(self::GRADES_TYPES);
+
+		foreach ($this->grades as $grade)
+		{
+			$sumRate += $grade;
+		}
+
+		return $sumRate / $countOfGradesTypes;
+	}
 }

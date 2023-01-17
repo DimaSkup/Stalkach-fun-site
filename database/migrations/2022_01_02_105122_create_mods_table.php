@@ -20,10 +20,11 @@ class CreateModsTable extends Migration
             $table->tinyText('name');
             $table->string('slug');
             $table->string('description');
-            $table->text('presentation');       // content on the main tab of modification
-            $table->enum('game', [Mod::GAME]);  // the game which is base for modification
-            $table->integer('views')->default(0);  // how many people viewed this modification
-            $table->json('download_links');     // sources to download this modification
+            $table->text('presentation');              // content on the main tab of modification
+            $table->enum('game', [Mod::GAME]);         // the game which is base for modification
+            $table->integer('views')->default(0);      // how many people viewed this modification
+            $table->json('download_links');            // sources to download this modification
+			$table->float('average_grade')->default(0); // an average grade for this modification
 
             # videos about the modification
             $table->tinyText('trailer_video_id')->nullable(); // a link to a mode trailer

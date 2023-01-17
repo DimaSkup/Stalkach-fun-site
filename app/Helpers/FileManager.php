@@ -13,6 +13,7 @@ interface FileManager
 
     // ---------------------------- FILE DATA GETTERS -------------------------------- //
     public function getFullPathByStoragePath(string $storagePath): string; // returns a full path to dir/file by passed $storagePath
+	public function getStoragePathByFullPath(string $fullPath): string;    // returns a storage path to dir/file by passed $fullPath
     public function getContent(UploadedFile|string $fileResource): string; // returns the content of the passed file (it can be file object or link to the file)
 
     public function getFileSizeInBytes(\SplFileInfo|string $fileResource): int;  // takes a PATH or LINK to some file and returns its size in bytes

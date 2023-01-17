@@ -58,10 +58,17 @@ class LocalFileManager implements FileManager
         return Storage::disk($this->disk)->path($storagePath);  // full path to the file
     }
 
+	// returns a storage path to dir/file by passed $fullPath
+	public function getStoragePathByFullPath(string $fullPath): string
+	{
+		$offset = strpos($fullPath, "/storage");
+		return substr($fullPath, $offset + strlen("/storage"));
+	}
+
     // returns the content of the passed file (it can be file object or link to the file)
     public function getContent(UploadedFile|string $fileResource): string
     {
-        if ($fileResource instanceof UploadedFile) // we have a file object
+        if ($fileResource instanceof UploadedFile)      // we have a file object
         {
             return $fileResource->getContent();
         }
@@ -156,6 +163,7 @@ class LocalFileManager implements FileManager
         return $this->getFileByFullPath($fullFilePath);                   // return a File object
     } // getFileByStoragePath()
 
+
     // takes a full PATH to the file and return a File object
     public function getFileByFullPath(string $fullPathToFile): File
     {
@@ -172,24 +180,40 @@ class LocalFileManager implements FileManager
     // 1. takes a file object or link to some file and
     // 2. creates a local (temporal) copy of this file
     // 3. returns this copy as a File object
-    public function getTempFileByResource(\SplFileInfo|string $fileResource): File
+    public function getTempFileByResource(\SplFileInfo|string $fileOrLink): File
     {
-        // get the file data
-        $content = $this->getContent($fileResource);
-        $storeTo = $this->getPathToDirByType($this->getTempFileType());
-        $originalName = (is_string($fileResource)) ? $fileResource : $fileResource->name;
-        $extension = pathinfo($originalName, PATHINFO_EXTENSION);
+		$storeToDir = $this->getPathToDirByType($this->getTempFileType());
+		$extension = pathinfo($fileOrLink, PATHINFO_EXTENSION);
 
-        // create a new file object using prepared data
-        $diskName = $this->getDisk();     // save the current disk name
-        $this->setDisk($this->getTempDisk());  // set a storage disk for temporal files
-        $storagePathToFile = $this->storeContentAsFileTo($content, $storeTo, $extension);
+		if (is_string($fileOrLink)) // if we have a link to the file
+		{
+			$fileContent = $this->getContentByLink($fileOrLink); // download the file content by its link
 
-        $tempFile = $this->getFileByStoragePath($storagePathToFile);
-        $this->setDisk($diskName);        // set the previous one disk name
+			$diskName = $this->getDisk();                        // save the current disk name
+			$this->setDisk($this->getTempDisk());                // set a storage disk for temporal files
 
-        return $tempFile;  // return the created temporal file
+			// create a new file object using prepared data
+			$storagePathToFile = $this->storeContentAsFileTo($fileContent, $storeToDir, $extension);
+			$tempFile = $this->getFileByStoragePath($storagePathToFile);
+
+			$this->setDisk($diskName);             // set the previous one disk name
+		}
+		else // else we have some image object so we just copy this file into the temp dir
+		{
+			$storeFrom = $this->getStoragePathByFullPath($fileOrLink->getRealPath());
+
+			// generate a path to file
+			$tempImageName = hash('sha256', time());        // get a hash-code which we will use as filename
+			$storeTo = $storeToDir . $tempImageName . "." . $extension; // short_path + name + extension
+
+			// copy the file
+			Storage::disk($this->disk)->copy($storeFrom, $storeTo);
+			$tempFile = $this->getFileByStoragePath($storeTo);
+		}
+
+		return $tempFile;  // return the temporal file
     } // getTempFileByResource()
+
 
 
     // ------------------------------ FILE SAVERS ------------------------------------ //

@@ -3,7 +3,8 @@
 // fake paths
 $fakePostCategoryImagesDir = 'fake/post_category/';
 $fakePostImagesDir = 'fake/post/';
-$fakeModImagesDir = 'fake/mod/images/';
+$fakeModMainImagesDir = 'fake/mod/images/main/';
+$fakeModScreenshotsDir = 'fake/mod/images/screenshots/';
 $fakeModVideosDir = 'fake/mod/videos/';
 
 // real paths
@@ -125,37 +126,37 @@ return [
         // --------------------------- MOD -------------------------------- //
         'mod_image_main' => [
             'disk' => 'public',
-            'fake' => $fakeModImagesDir,
+            'fake' => $fakeModMainImagesDir,
             'path' => $modImages,  // suffix
             'default_file' => 'default/no-photo.png',
         ],
         'mod_image_screenshot' => [
             'disk' => 'public',
-            'fake' => $fakeModImagesDir,
+            'fake' => $fakeModScreenshotsDir,
             'path' => $modImages, // suffix
             'default_file' => 'default/no-photo.png',
         ],
         'mod_image_trailer' => [
             'disk' => 'public',
-            'fake' => $fakeModImagesDir,
+            'fake' => $fakeModMainImagesDir,
             'path' => $modImages, // suffix
             'default_file' => 'default/no-photo.png',
         ],
         'mod_image_review' => [
             'disk' => 'public',
-            'fake' => $fakeModImagesDir,
+            'fake' => $fakeModMainImagesDir,
             'path' => $modImages, // suffix
             'default_file' => 'default/no-photo.png',
         ],
         'mod_image_boxart' => [
             'disk' => 'public',
-            'fake' => $fakeModImagesDir,
+            'fake' => $fakeModMainImagesDir,
             'path' => $modImages, // suffix
             'default_file' => 'default/no-photo.png',
         ],
         'mod_image_background' => [
             'disk' => 'public',
-            'fake' => $fakeModImagesDir,
+            'fake' => $fakeModMainImagesDir,
             'path' => $modImages, // suffix
             'default_file' => 'default/no-photo.png',
         ],

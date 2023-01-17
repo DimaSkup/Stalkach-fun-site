@@ -1,8 +1,3 @@
-{{--
-    A SINGLE MODIFICATION PAGE
-    (main template)
---}}
-
 @extends('layouts.theme')
 
 @section('js')
@@ -11,10 +6,223 @@
 
 @section('content')
     <section class="mod">
-        @include ('mods.show.includes._show_mod_header', ['mod' => $mod])
-        @include ('mods.show.includes._show_mod_mini_header')
-        @include ('mods.show.includes._show_mod_menu_navigation')
+        <div class="mod-header">
+            <div class="splide main-carousel">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide">
+                            <a data-fslightbox="gallery" href="{{ asset('video/333.mp4') }}">
+                                <video autoplay loop muted poster="{{ asset('img/333.jpeg') }}" id="background">
+                                    <source src="{{ asset('video/333.mp4') }}" type="video/mp4">
+                                </video>
+                            </a>
+                        </li>
+                        @foreach(array_fill(1, 5, 1) as $key => $item)
+                            <li class="splide__slide">
+                                <a data-fslightbox="gallery" href="https://picsum.photos/1240/600?random={{ $key }}">
+                                    <img src="https://picsum.photos/1240/600?random={{ $key }}" alt="">
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+            <div class="header-content">
+                <button type="button" class="btn btn-icon secondary" id="open-lightbox">
+                    <span class="material-icons-outlined">aspect_ratio</span>
+                </button>
+                <div class="left-side">
+                    <div class="title-block">
+                        <h1>Lost in the Zone</h1>
+                    </div>
+                    <div class="mod-meta-block">
+                        <a class="mod-game" href="#">
+                            <div class="game-icon">
+                                <img src="{{ asset('images/icons/games/cs.ico') }}">
+                            </div>
+                            <div>S.T.A.L.K.E.R: Clear Sky</div>
+                        </a>
+                        <a href="#">
+                            Dima Skyp
+                        </a>
+                    </div>
 
+                    <div class="links-block">
+                        <div class="btn-group dropup">
+                            <button type="button" class="download-link btn primary">Download</button>
+                            <button
+                                    type="button"
+                                    class="btn primary dropdown-toggle dropdown-toggle-split"
+                                    data-mdb-toggle="dropdown"
+                                    aria-expanded="false"
+                            >
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item with-icon" href="#" target="_blank">
+                                        <div class="icon">
+                                            <img src="{{ asset('images/icons/drivers/google-drive.svg') }}">
+                                        </div>
+                                        <div class="title">Google Drive</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item with-icon" href="#" target="_blank">
+                                        <div class="icon">
+                                            <img src="{{ asset('images/icons/drivers/dropbox.svg') }}">
+                                        </div>
+                                        <div class="title">Dropbox</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item with-icon" href="#" target="_blank">
+                                        <div class="icon">
+                                            <img src="{{ asset('images/icons/drivers/mega.svg') }}">
+                                        </div>
+                                        <div class="title">Mega NZ</div>
+                                    </a>
+                                </li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li>
+                                    <a class="dropdown-item with-icon" href="#" target="_blank">
+                                        <div class="icon">
+                                            <span class="material-icons">downloading</span>
+                                        </div>
+                                        <div class="title">custom-site.com</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="dropup">
+                            <button
+                                    class="btn btn-with-icon secondary dropdown-toggle"
+                                    type="button"
+                                    id="dropdownMenuButton"
+                                    data-mdb-toggle="dropdown"
+                                    aria-expanded="false"
+                            >
+                                <span class="material-icons">upload_file</span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="#">Fix with UI</a></li>
+                                <li><a class="dropdown-item" href="#">Graphic enhancement</a></li>
+                                <li><a class="dropdown-item" href="#">Save 100%</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-side">
+                    <div class="stat-wrapper">
+                        <div class="stat-block">
+                            <span><b>9.2</b>/10</span>
+                            <small>Rating</small>
+                        </div>
+                        <div class="stat-block">
+                            <span>32</span>
+                            <small>Subscribers</small>
+                        </div>
+                        <div class="stat-block">
+                            <span>800</span>
+                            <small>Views</small>
+                        </div>
+                    </div>
+                    <div class="splide thumbnail-carousel">
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                                <li class="splide__slide">
+                                    <img src="{{ asset('img/333.jpeg') }}" alt="">
+                                </li>
+                                @foreach(array_fill(1, 5, 1) as $key => $item)
+                                    <li class="splide__slide">
+                                        <img src="https://picsum.photos/1240/600?random={{ $key }}" alt="">
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mod-mini-header">
+            <div class="left-side">
+                <div class="main-image">
+                    <img src="https://avatarfiles.alphacoders.com/101/101770.jpg">
+                </div>
+                <div class="title">
+                    <div class="header">Lost in the Zone</div>
+                    <div class="meta-block">
+                        <a class="game" href="#">
+                            <div class="game-icon">
+                                <img src="{{ asset('images/icons/games/cs.ico') }}">
+                            </div>
+                            <div>S.T.A.L.K.E.R: Clear Sky</div>
+                        </a>
+                        &bull;
+                        <a href="#">Dima Skyp</a>
+                    </div>
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="stat-block">
+                    <span><b>9.2</b>/10</span>
+                    <small>Rating</small>
+                </div>
+                <div class="stat-block">
+                    <span>32</span>
+                    <small>Subscribers</small>
+                </div>
+                <div class="stat-block">
+                    <span>800</span>
+                    <small>Views</small>
+                </div>
+            </div>
+        </div>
+
+        <nav class="mod-menu" id="mod-navigation">
+{{--            <a href="#feed" class="active">--}}
+{{--                <div class="nav-wrapper">--}}
+{{--                    <span class="material-icons">feed</span>--}}
+{{--                    <span class="title">Feed</span>--}}
+{{--                </div>--}}
+{{--            </a>--}}
+            <a href="#description" class="active">
+                <div class="nav-wrapper">
+                    <span class="material-icons">description</span>
+                    <span class="title">Description</span>
+                </div>
+            </a>
+            <a href="#reviews">
+                <div class="nav-wrapper">
+                    <span class="material-icons">reviews</span>
+                    <span class="title">Reviews</span>
+                </div>
+            </a>
+            <a href="#faq">
+                <div class="nav-wrapper">
+                    <span class="material-icons">question_answer</span>
+                    <span class="title">Q&A</span>
+                </div>
+            </a>
+            <a href="#changelog">
+                <div class="nav-wrapper">
+                    <span class="material-icons">update</span>
+                    <span class="title">Changelog</span>
+                </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=Lu777Ll-XnA" target="_blank">
+                <div class="nav-wrapper">
+                    <span class="material-icons">ondemand_video</span>
+                    <span class="title">Video Review</span>
+                </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=Lu777Ll-XnA" target="_blank">
+                <div class="nav-wrapper">
+                    <span class="material-icons">route</span>
+                    <span class="title">Guide</span>
+                </div>
+            </a>
+        </nav>
 
         <div class="splide mod-section">
             <div class="splide__track">
