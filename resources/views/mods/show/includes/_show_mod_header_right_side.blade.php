@@ -26,11 +26,19 @@
         <div class="splide__track">
             <ul class="splide__list">
                 @if ($mod->galleryVideo)
+                    {{-- mod's gallery video --}}
                     <li class="splide__slide">
                         <img src="{{ asset('img/333.jpeg') }}" alt="">
                     </li>
                 @endif
+
+                    {{-- mod's main image --}}
+                    <li class="splide__slide">
+                        <img src="{{ $mod->mainImage }}" alt="single_mod_main_image">
+                    </li>
+
                 @foreach($mod->screenshots as $key => $screenImagePath)
+                    {{-- mod's screenshots --}}
                     <li class="splide__slide">
                         <img src="{{ $screenImagePath }}" alt="single_mod_screenshot_image">
                     </li>

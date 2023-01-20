@@ -30,7 +30,7 @@ class FakeModsSeeds extends Seeder
     // fake video links
     private static string $defaultReviewVideoLink = "https://www.youtube.com/watch?v=OuHdnsF118U";
 
-    // some objects
+    // objects for work with files and the filesystem
     private FileManager $fileManager;     // for work with files and filesystem
     private ImageUploader $imageUploader; // for uploading of the images
 
@@ -176,7 +176,7 @@ class FakeModsSeeds extends Seeder
         $path = Arr::random($this->screenshotsPathArray);
         $imageFile = $this->fileManager->getFileByStoragePath($path);
 
-        if ($imageType) // if we want to convert image to some particular type
+        if ($imageType) // if we want to convert this image to some particular type
 		{
 			$imageFile = $this->imageUploader->upload($imageFile, $imageType);
 		}

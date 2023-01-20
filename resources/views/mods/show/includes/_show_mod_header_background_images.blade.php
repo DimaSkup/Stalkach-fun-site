@@ -20,6 +20,13 @@
                 </li>
             @endif
 
+            {{-- mod's main image --}}
+            <li class="splide__slide">
+                <a data-fslightbox="gallery" href="{{ $mod->mainImage }}">
+                    <img src="{{ $mod->mainImage }}" alt="single_mod_main_image">
+                </a>
+            </li>
+
             {{-- mod screenshots for background --}}
             @foreach($mod->screenshots as $key => $screenImagePath)
                 <li class="splide__slide">

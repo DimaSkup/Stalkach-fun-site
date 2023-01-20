@@ -12,6 +12,7 @@ $postCategoryImages = 'images/post_category/';
 $postImages = 'images/post/';
 $modImages = 'images/mod/';
 $modVideos = 'videos/mod/';
+$userImages = 'images/user/';
 
 
 
@@ -116,13 +117,22 @@ return [
             'default_file' => 'default/no-photo.png',
         ],
 
-        // --------------------------- CATEGORY----------------------------- //
-        'post_category_image_background' => [
-            'disk' => 'public',
-            'fake' => $fakePostCategoryImagesDir,
-            'path' => $postCategoryImages,  // suffix
-            'default_file' => 'default/no-photo.png',
-        ],
+		// --------------------------- USER ------------------------------- //
+		'user_files' => [
+			'disk' => 'public',
+			'path' => 'files/user/',
+		],
+		'user_images' => [
+			'disk' => 'public',
+			'path' => $userImages,
+		],
+		'user_image_avatar' => [
+			'disk' => 'public',
+			'fake' => 'fake/user/avatars/',
+			'path' => $userImages . "/avatars/",  // suffix
+			'default_file' => 'default/no-photo.png',
+		],
+
         // --------------------------- MOD -------------------------------- //
         'mod_image_main' => [
             'disk' => 'public',
@@ -215,6 +225,14 @@ return [
             'default_file' => 'default/no-photo.png',
         ],
          */
+
+		// ----------------------- CATEGORY (FOR POSTS) -------------------------- //
+		'post_category_image_background' => [
+			'disk' => 'public',
+			'fake' => $fakePostCategoryImagesDir,
+			'path' => $postCategoryImages,  // suffix
+			'default_file' => 'default/no-photo.png',
+		],
     ],
 
     /*
