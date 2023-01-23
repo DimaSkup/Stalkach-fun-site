@@ -4,15 +4,20 @@
 
 @extends('layouts.theme')
 
+
 @section('js')
     <script src="{{ asset('js/mods-index.js') }}"></script>
 @endsection
+
 
 @php
     $legacyMode = false;
 @endphp
 
 @section('content')
+    {{-- the styles only for mods module--}}
+    <link rel="stylesheet" href="{{ asset('css/mods.css') }}" />
+
     <div class="content-container mods">
         {{-- a section with the list of recent mods (carousel with mods + some info about each mod) --}}
         @include ('mods.includes._index_recent_mods', ['latestMods' => $latestMods])
@@ -22,7 +27,7 @@
     </div>
 
 
-    {{-- LOOKING FOR some modification by filters --}}
+    {{-- LOOKING FOR some modification using the filters --}}
     <div class="content-container gradient-background">
 
         @if ($legacyMode)

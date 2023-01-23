@@ -1,5 +1,6 @@
 {{--
-    SET UP FILTERS FOR SEARCHING A PARTICULAR MODIFICATION
+    (MAIN MODS PAGE)
+    A FORM WITH FILTERS FOR SEARCHING A PARTICULAR MODIFICATION
 --}}
 
 @php
@@ -76,11 +77,12 @@
                 <label class="s-radio-block">
                     <input class="s-control"
                            type="radio"
-                           name="{{$key}}"
+                           name="difficult"
                            id="{{$key}}"
                            @if ($loop->first) checked @endif {{-- the first element "all difficulties" must be chosen after loading of the page --}}
                     >
                     <div class="box" data-mdb-toggle="tooltip" title="{{ $data['text'] }}">
+                        {{-- each difficulty has a particular color/icon --}}
                         <span class="material-icons {{$data['icon_color']}}">
                             {{ $data['icon_name'] }}
                         </span>
@@ -90,7 +92,10 @@
         </div>
     </div>
 
-    {{-- I don't know what is it --}}
+    {{--
+        when you hit some filter parameter the circle arrows (upper-right side of the block)
+        will rotate during loading of the filtered mods
+    --}}
     <div class="right-side">
         <div class="s-mini-loader"></div>
     </div>

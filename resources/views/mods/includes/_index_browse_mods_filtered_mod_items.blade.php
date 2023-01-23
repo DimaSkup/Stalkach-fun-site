@@ -1,7 +1,7 @@
 {{--
     (MAIN MODS PAGE)
     RESULTS BY SEARCHING FILTERS
-    (a list with modification which were filtered by particular parameters)
+    (a list with modifications which were filtered by particular parameters)
 --}}
 
 <div class="grid">
@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div class="right-side">
-                        <div>
+                        <div class="features">
                             <span class="material-icons">backpack</span>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                 <div class="title">{{ $mod->name }}</div>
                 <small class="subinfo">
                     <img src="{{ $mod->basicGameIcoPath }}">
-                    <span>{{ $mod->basicGameName  }}</span>
+                    <span>{{ $mod->basicGameName }}</span>
                 </small>
             </div>
         </a>
