@@ -2318,6 +2318,8 @@ a.link-prev:before {
   line-clamp: 1;
   -webkit-box-orient: vertical;
 }
+
+/* styles for tags which are placed in a post block */
 .article .popular-tag {
   display: inline-block;
   background: #1b1b1b;
@@ -2634,11 +2636,96 @@ section .body-wrapper {
   }
 }
 
-.s-group {
+
+
+
+
+
+
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/*                               COMPONENTS                                  */
+/*                    look at link: site_root/component                      */
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+
+/* styles for different filters groups */
+.filters .s-group {
   margin-bottom: 30px;
+  margin-right: 10px;
+}
+.filters .s-group:last-of-type {
+  margin-right: 0;
 }
 
-input.s-control, textarea.s-control, select.s-control {
+/* input text field: FILTRATION BY TEXT */
+.filters .s-search {
+  position: relative;
+}
+.filters .s-search:before {
+  display: block;
+  position: absolute;
+  left: 9px;
+  top: 11px;
+  color: #656565;
+  font-family: "Material Icons";
+  font-size: 18px;
+  content: "\e8b6";
+}
+.filters .s-search input.s-control {
+  padding-left: 32px;
+}
+
+
+
+/* if the cursor at some filtration parameter */
+.filters label.s-radio-block {
+  cursor: pointer;
+}
+.filters label.s-radio-block input[type=radio],
+.filters label.s-radio-block input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+}
+/* if we have chosen some filter */
+.filters label.s-radio-block input[type=radio]:checked + .box,
+.filters label.s-radio-block input[type=checkbox]:checked + .box {
+  background-color: #292929;
+}
+/* styles for filters icons */
+.filters label.s-radio-block .box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #1c1c1c;
+  background-color: #1c1c1c;
+  height: 40px;
+  transition: 0.3s;
+  letter-spacing: 2px;
+  font-family: "Proxima Nova", sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+/* a difficulty pictogram or a basic game icon */
+.filters label.s-radio-block span {
+  font-size: 14px;
+}
+.filters label.s-radio-block img {
+  width: 14px;
+  height: 14px;
+}
+
+
+
+
+/* form elements styles (labels, input fields, checkbox/radio buttons, etc.) */
+input.s-control,
+textarea.s-control,
+select.s-control {
   display: block;
   width: 100%;
   height: 40px;
@@ -2655,56 +2742,63 @@ input.s-control, textarea.s-control, select.s-control {
   background-size: 0% 2px;
   transition: background-size 0.3s;
 }
-input.s-control:focus, input.s-control.focus, textarea.s-control:focus, textarea.s-control.focus, select.s-control:focus, select.s-control.focus {
+input.s-control:focus, input.s-control.focus,
+textarea.s-control:focus, textarea.s-control.focus,
+select.s-control:focus, select.s-control.focus {
   background-size: 100% 2px;
   outline: none;
 }
-input.s-control::-moz-placeholder, textarea.s-control::-moz-placeholder, select.s-control::-moz-placeholder {
-  color: #353535;
+/* placeholders styles for different browsers */
+input.s-control::-moz-placeholder,
+textarea.s-control::-moz-placeholder,
+select.s-control::-moz-placeholder {
+  color: #656565;
   font-style: normal;
   text-transform: none;
 }
-input.s-control:-ms-input-placeholder, textarea.s-control:-ms-input-placeholder, select.s-control:-ms-input-placeholder {
-  color: #353535;
+input.s-control:-ms-input-placeholder,
+textarea.s-control:-ms-input-placeholder,
+select.s-control:-ms-input-placeholder {
+  color: #656565;
   font-style: normal;
   text-transform: none;
 }
-input.s-control::placeholder, textarea.s-control::placeholder, select.s-control::placeholder {
-  color: #353535;
+input.s-control::placeholder,
+textarea.s-control::placeholder,
+select.s-control::placeholder {
+  color: #656565;
   font-style: normal;
   text-transform: none;
 }
-input.s-control[valid], input.s-control.valid, textarea.s-control[valid], textarea.s-control.valid, select.s-control[valid], select.s-control.valid {
+/* validation states */
+input.s-control[valid], input.s-control.valid,
+textarea.s-control[valid], textarea.s-control.valid,
+select.s-control[valid], select.s-control.valid {
   border: 1px solid #B4FFA8;
 }
-input.s-control[invalid], input.s-control.invalid, textarea.s-control[invalid], textarea.s-control.invalid, select.s-control[invalid], select.s-control.invalid {
+input.s-control[invalid], input.s-control.invalid,
+textarea.s-control[invalid], textarea.s-control.invalid,
+select.s-control[invalid], select.s-control.invalid {
   border: 1px solid #FF7C7C;
 }
-input.s-control:-moz-read-only, textarea.s-control:-moz-read-only, select.s-control:-moz-read-only {
+input.s-control:-moz-read-only,
+textarea.s-control:-moz-read-only,
+select.s-control:-moz-read-only {
   background: #2a2a2a;
 }
-input.s-control:read-only, input.s-control:disabled, textarea.s-control:read-only, textarea.s-control:disabled, select.s-control:read-only, select.s-control:disabled {
+input.s-control:read-only, input.s-control:disabled,
+textarea.s-control:read-only, textarea.s-control:disabled,
+select.s-control:read-only, select.s-control:disabled {
   background: #2a2a2a;
 }
 
-.s-search {
-  position: relative;
-}
-.s-search:before {
-  display: block;
-  position: absolute;
-  left: 9px;
-  top: 11px;
-  color: #353535;
-  font-family: "Material Icons";
-  font-size: 18px;
-  content: "\e8b6";
-}
-.s-search input.s-control {
-  padding-left: 32px;
-}
 
-label.s-control, .s-label {
+
+
+
+/* LABEL STYLES */
+label.s-control,
+.s-label {
   display: inline-block;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
@@ -2713,35 +2807,51 @@ label.s-control, .s-label {
   letter-spacing: 2px;
   color: #afafaf;
 }
-label.s-control.dark, .s-label.dark {
+label.s-control.dark,
+.s-label.dark {
   color: #424242;
 }
 
-.s-checkbox, .s-radio, .s-checklist {
+/* components: CHECKOUT / RADIO_BUTTON / CHECK_LIST */
+.s-checkbox,
+.s-radio,
+.s-checklist {
   display: flex;
   align-items: center;
   margin-bottom: 0.5rem;
 }
-.s-checkbox .check, .s-radio .check, .s-checklist .check {
+.s-checkbox .check,
+.s-radio .check,
+.s-checklist .check {
   display: inline-block;
   width: 20px;
   height: 20px;
   cursor: pointer;
   margin-bottom: 0;
 }
-.s-checkbox .check input, .s-radio .check input, .s-checklist .check input {
+.s-checkbox .check input,
+.s-radio .check input,
+.s-checklist .check input {
   display: none;
 }
-.s-checkbox .check input:checked + .box, .s-radio .check input:checked + .box, .s-checklist .check input:checked + .box {
+.s-checkbox .check input:checked   + .box,
+.s-radio .check input:checked      + .box,
+.s-checklist .check input:checked  + .box {
   background-color: #ffe661;
 }
-.s-checkbox .check input:checked + .box:after, .s-radio .check input:checked + .box:after, .s-checklist .check input:checked + .box:after {
+.s-checkbox .check input:checked   + .box:after,
+.s-radio .check input:checked      + .box:after,
+.s-checklist .check input:checked  + .box:after {
   top: 0;
 }
-.s-checkbox .check input:disabled + .box, .s-radio .check input:disabled + .box, .s-checklist .check input:disabled + .box {
+.s-checkbox .check input:disabled  + .box,
+.s-radio .check input:disabled     + .box,
+.s-checklist .check input:disabled + .box {
   background-color: #1c1c1c;
 }
-.s-checkbox .check .box, .s-radio .check .box, .s-checklist .check .box {
+.s-checkbox  .check .box,
+.s-radio     .check .box,
+.s-checklist .check .box {
   width: 100%;
   height: 100%;
   transition: all 1.1s cubic-bezier(0.19, 1, 0.22, 1);
@@ -2752,7 +2862,13 @@ label.s-control.dark, .s-label.dark {
   cursor: pointer;
   box-shadow: 0 5px rgba(0, 0, 0, 0.2);
 }
-.s-checkbox .check .box:after, .s-radio .check .box:after, .s-checklist .check .box:after {
+/*
+   styles for effects which appear when you click
+   on a checkbox/radio/checklist element
+ */
+.s-checkbox  .check .box:after,
+.s-radio     .check .box:after,
+.s-checklist .check .box:after {
   width: 60%;
   height: 35%;
   content: "";
@@ -2769,11 +2885,15 @@ label.s-control.dark, .s-label.dark {
   bottom: 5%;
   margin: auto;
 }
-.s-checkbox label.s-control, .s-checkbox .s-label, .s-radio label.s-control, .s-radio .s-label, .s-checklist label.s-control, .s-checklist .s-label {
+/* styles for labels near checkbox/radio/checklist buttons */
+.s-checkbox label.s-control, .s-checkbox .s-label,
+.s-radio label.s-control, .s-radio .s-label,
+.s-checklist label.s-control, .s-checklist .s-label {
   margin-bottom: 0;
   margin-left: 15px;
 }
 
+/* radio buttons specific styles */
 .s-radio .check input:checked + .box:after {
   opacity: 1;
   top: 1px;
@@ -2792,6 +2912,7 @@ label.s-control.dark, .s-label.dark {
   opacity: 0;
 }
 
+/* checklist elements specific styles */
 .s-checklist {
   display: block;
 }
@@ -2815,6 +2936,9 @@ label.s-control.dark, .s-label.dark {
   top: 0;
 }
 
+
+
+/* THE CHECKOUT BLOCK STYLES */
 .s-card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -3158,101 +3282,10 @@ label.s-control.dark, .s-label.dark {
   background-size: 100% 2px;
 }
 
-.filters {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-}
-.filters .baseline {
-  align-items: baseline;
-}
-.filters .left-side, .filters .right-side {
-  display: flex;
-  flex-wrap: wrap;
-}
-.filters .s-group {
-  margin-right: 10px;
-}
-.filters .s-group:last-of-type {
-  margin-right: 0;
-}
-.filters label.s-radio-block {
-  cursor: pointer;
-}
-.filters label.s-radio-block input[type=radio], .filters label.s-radio-block input[type=checkbox] {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-}
-.filters label.s-radio-block input[type=radio]:checked + .box, .filters label.s-radio-block input[type=checkbox]:checked + .box {
-  background-color: #292929;
-}
-.filters label.s-radio-block .box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px;
-  border: 1px solid #1c1c1c;
-  background-color: #1c1c1c;
-  height: 40px;
-  transition: 0.3s;
-  letter-spacing: 2px;
-  font-family: "Proxima Nova", sans-serif;
-  font-size: 12px;
-  text-transform: uppercase;
-  color: #ffffff;
-}
-.filters label.s-radio-block span {
-  font-size: 14px;
-}
-.filters label.s-radio-block img {
-  width: 14px;
-  height: 14px;
-}
 
-.s-mini-loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-}
-.s-mini-loader.loading:after, .s-mini-loader [loading]:after {
-  color: #ffffff;
-  transition: color 0.5s;
-  -webkit-animation: rotating 2s linear infinite;
-          animation: rotating 2s linear infinite;
-}
-.s-mini-loader:after {
-  font-family: "Material Icons";
-  font-size: 18px;
-  content: "\e627";
-  color: #3e3e3e;
-  position: absolute;
-  padding: 11px;
-  width: 40px;
-  height: 40px;
-  text-align: center;
-}
 
-@-webkit-keyframes rotating {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-@keyframes rotating {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
 /********* TABS ***********/
 .nav-tabs .nav-link {
   padding: 17px 0;
@@ -6541,6 +6574,11 @@ measure so that we ensure a filling of the screen.
   grid-gap: 40px;
 }
 
+.posts-grid .article
+{
+  overflow: hidden;
+}
+
 .loadmore-wrapper {
   margin: 40px 0;
   display: flex;
@@ -7013,9 +7051,17 @@ measure so that we ensure a filling of the screen.
 .mod .links-block .download-link {
   font-weight: 600;
 }
+
+
+/********************************/
+/*       SHOW MOD PAGE:         */
+/*        MINI HEADER           */
+/********************************/
+
 .mod .mod-mini-header {
   font-family: "Proxima Nova", sans-serif;
-  height: 60px;
+
+  height: 300px;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -7027,6 +7073,9 @@ measure so that we ensure a filling of the screen.
   justify-content: space-between;
   background: #151515;
 }
+
+
+/* for the main image which will be shown as avatar */
 .mod .mod-mini-header .main-image {
   max-width: 40px;
   width: 40px;
@@ -7049,6 +7098,7 @@ measure so that we ensure a filling of the screen.
   height: 15px;
   margin-right: 5px;
 }
+
 .mod .mod-mini-header .meta-block > a {
   margin: 0 5px;
 }
@@ -7061,16 +7111,19 @@ measure so that we ensure a filling of the screen.
 .mod .mod-mini-header .left-side, .mod .mod-mini-header .right-side {
   display: flex;
 }
-.mod .mod-mini-header .header {
+.mod .mod-mini-header .left-side .title .header {
   font-weight: 600;
   font-size: 20px;
 }
-.mod .mod-mini-header .author {
+.mod .mod-mini-header .left-side .title .meta-block .author {
   color: #797979;
 }
 .mod .mod-mini-header .author:hover, .mod .mod-mini-header .author:focus {
   color: #ffffff;
 }
+
+
+
 .mod .mod-menu {
   position: -webkit-sticky;
   position: sticky;
@@ -7313,179 +7366,30 @@ footer {
   margin-top: 0;
 }
 
-.mods .splide__slide img, .mods .splide__slide video, .browse-mods .splide__slide img, .browse-mods .splide__slide video {
+.mods .splide__slide img,
+.mods .splide__slide video {
   -o-object-fit: cover;
      object-fit: cover;
   width: 100%;
   height: 100%;
 }
-.mods .featured-mods, .browse-mods .featured-mods {
-  position: relative;
-  height: 700px;
-  margin-bottom: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.mods .featured-mods .section-content, .browse-mods .featured-mods .section-content {
-  position: relative;
-  height: 100%;
-  background: linear-gradient(0, rgb(21, 21, 21) 0%, rgba(21, 21, 21, 0) 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.mods .featured-mods .header, .browse-mods .featured-mods .header {
-  padding: 40px;
-}
-.mods .featured-mods .info-wrapper, .browse-mods .featured-mods .info-wrapper {
-  display: flex;
-}
-.mods .bg-carousel, .browse-mods .bg-carousel {
-  background-color: #151515;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  overflow: hidden;
-}
-.mods .bg-carousel .splide__track, .browse-mods .bg-carousel .splide__track {
-  height: 100%;
-}
-.mods .bg-carousel .splide__slide, .browse-mods .bg-carousel .splide__slide {
-  width: 100%;
-  height: 100%;
-}
-.mods .info-carousel, .browse-mods .info-carousel {
-  width: 50%;
-  padding: 0 40px;
-}
-.mods .thumbnail-carousel-wrapper, .browse-mods .thumbnail-carousel-wrapper {
-  width: 50%;
-  display: flex;
-  align-items: flex-end;
-}
-.mods .thumbnail-carousel-wrapper .splide__track--nav > .splide__list > .splide__slide.is-active, .browse-mods .thumbnail-carousel-wrapper .splide__track--nav > .splide__list > .splide__slide.is-active {
-  border: 2px solid #ffe661;
-}
-.mods .info, .browse-mods .info {
-  margin-top: 10px;
-}
-.mods .title, .browse-mods .title {
-  font-size: 1rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-.mods .subinfo, .browse-mods .subinfo {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  font-family: "Proxima Nova", sans-serif;
-  color: #797979;
-  margin-top: 5px;
-}
-.mods .subinfo img, .browse-mods .subinfo img {
-  width: 0.8rem;
-  height: 0.8rem;
-  margin-right: 5px;
-}
-.mods .cover, .browse-mods .cover {
-  position: relative;
-  overflow: hidden;
-  border-radius: 3px;
-}
-.mods .cover img, .browse-mods .cover img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-.mods .rating, .browse-mods .rating {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: 5px 10px;
-  color: #000000;
-  background: #ffe661;
-}
-.mods .mod-item, .browse-mods .mod-item {
-  position: relative;
-}
-.mods .mod-item .metadata, .browse-mods .mod-item .metadata {
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  width: 100%;
-  padding: 5px 10px;
-  display: flex;
-  justify-content: space-between;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  background: linear-gradient(0deg, rgba(41, 41, 41, 0) 0%, rgb(41, 41, 41) 100%);
-}
-.mods .mod-item .metadata span, .browse-mods .mod-item .metadata span {
-  font-size: 16px;
-  text-shadow: 0.5px 0.5px 1px black;
-}
-.mods .mod-item .metadata .game img, .browse-mods .mod-item .metadata .game img {
-  width: 14px;
-  height: 14px;
-}
-.mods .mod-item .metadata .left-side, .browse-mods .mod-item .metadata .left-side {
-  display: flex;
-}
-.mods .top-mods, .browse-mods .top-mods {
-  background: #151515;
-  padding: 20px 0;
-}
-.mods .top-mods-carousel, .browse-mods .top-mods-carousel {
-  margin-bottom: 40px;
-}
-.mods .top-mods-carousel .splide__arrows, .browse-mods .top-mods-carousel .splide__arrows {
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  top: -2.4rem;
-  right: 0;
-  width: 4rem;
-}
-.mods .top-mods-carousel .splide__arrow, .browse-mods .top-mods-carousel .splide__arrow {
-  position: initial;
-  background: none;
-}
-.mods .top-mods-carousel .splide__arrow--next, .mods .top-mods-carousel .splide__arrow--prev, .browse-mods .top-mods-carousel .splide__arrow--next, .browse-mods .top-mods-carousel .splide__arrow--prev {
-  color: #797979;
-  left: unset;
-  right: unset;
-  top: unset;
-  transform: unset;
-  transition: 0.3s;
-}
-.mods .top-mods-carousel .splide__arrow--next:hover, .mods .top-mods-carousel .splide__arrow--prev:hover, .browse-mods .top-mods-carousel .splide__arrow--next:hover, .browse-mods .top-mods-carousel .splide__arrow--prev:hover {
-  color: #ffe661;
-}
-.mods .mods-filters, .browse-mods .mods-filters {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-}
-.mods .grid, .browse-mods .grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-gap: 1rem;
-  margin-bottom: 40px;
-}
 
 
-.mods .mod-item, .browse-mods .mod-item {
-  width: 100%;
-}
 
-.browse-mods {
-  padding: 20px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /***************
 **** Colors ****

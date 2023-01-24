@@ -1,0 +1,353 @@
+/*
+---------------------------------------------------------------------------------------
+
+                           STYLES FOR THE MAIN MODS PAGE
+
+---------------------------------------------------------------------------------------
+*/
+
+/* --------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------- */
+/*                               HEADER (MAIN PAGE)                                  */
+/* --------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------- */
+
+.mods .grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 1rem;
+    margin-bottom: 40px;
+}
+.mods .mod-item {
+    width: 100%;
+}
+
+.mods .featured-mods {
+    position: relative;
+    height: 700px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mods .featured-mods .section-content {
+    position: relative;
+    height: 100%;
+    background: linear-gradient(0, rgb(21, 21, 21) 0%, rgba(21, 21, 21, 0) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mods .featured-mods .header {
+    padding: 40px;
+}
+.mods .featured-mods .info-wrapper {
+    display: flex;
+}
+
+.mods .bg-carousel {
+    background-color: #151515;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    overflow: hidden;
+}
+
+.mods .bg-carousel .splide__track {
+    height: 100%;
+}
+.mods .bg-carousel .splide__slide {
+    width: 100%;
+    height: 100%;
+}
+.mods .info-carousel {
+    width: 50%;
+    padding: 0 40px;
+}
+
+.mods .thumbnail-carousel-wrapper {
+    width: 50%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.mods .thumbnail-carousel-wrapper .splide__track--nav > .splide__list > .splide__slide.is-active {
+    border: 2px solid #ffe661;
+}
+
+.mods .info {
+    margin-top: 10px;
+}
+
+.mods .title {
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.mods .subinfo {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    font-family: "Proxima Nova", sans-serif;
+    color: #797979;
+    margin-top: 5px;
+}
+
+/* basic game icon image */
+.mods .subinfo img {
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-right: 5px;
+}
+
+.mods .cover {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.mods .cover img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+.mods .rating {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 5px 10px;
+    color: #000000;
+    background: #ffe661;
+}
+.mods .mod-item {
+    position: relative;
+}
+.mods .mod-item .metadata {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    background: linear-gradient(0deg, rgba(41, 41, 41, 0) 0%, rgb(41, 41, 41) 100%);
+}
+.mods .mod-item .metadata span {
+    font-size: 16px;
+    text-shadow: 0.5px 0.5px 1px black;
+}
+.mods .mod-item .metadata .game img{
+    width: 14px;
+    height: 14px;
+}
+.mods .mod-item .metadata .left-side {
+    display: flex;
+}
+.mods .top-mods {
+    background: #151515;
+    padding: 20px 0;
+}
+.mods .top-mods-carousel {
+    margin-bottom: 40px;
+}
+.mods .top-mods-carousel .splide__arrows {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: -2.4rem;
+    right: 0;
+    width: 4rem;
+}
+.mods .top-mods-carousel .splide__arrow {
+    position: initial;
+    background: none;
+}
+.mods .top-mods-carousel .splide__arrow--next,
+.mods .top-mods-carousel .splide__arrow--prev  {
+    color: #797979;
+    left: unset;
+    right: unset;
+    top: unset;
+    transform: unset;
+    transition: 0.3s;
+}
+.mods .top-mods-carousel .splide__arrow--next:hover,
+.mods .top-mods-carousel .splide__arrow--prev:hover  {
+    color: #ffe661;
+}
+
+
+/* --------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------- */
+/*                     A FORM FOR MODS FILTRATION  (MAIN PAGE)                       */
+/* --------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------- */
+.browse-mods {
+    padding: 20px;
+}
+
+.filters {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+.filters .left-side,
+.filters .right-side {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+
+
+/* styles for the MINI-LOADER */
+.s-mini-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+}
+.s-mini-loader.loading:after,
+.s-mini-loader [loading]:after {
+    color: #ffffff;
+    transition: color 0.5s;
+    -webkit-animation: rotating 2s linear infinite;
+    animation: rotating 2s linear infinite;
+}
+.s-mini-loader:after {
+    font-family: "Material Icons";
+    font-size: 18px;
+    content: "\e627";
+    color: #3e3e3e;
+    position: absolute;
+    padding: 11px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+}
+@-webkit-keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+/* --------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------- */
+/*                        FILTERED MODS ITEMS (MAIN PAGE)                            */
+/* --------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------- */
+
+.browse-mods .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+    margin-bottom: 40px;
+}
+
+@media (min-width: 50em) {
+    .browse-mods .grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 1rem;
+        margin-bottom: 40px;
+    }
+}
+
+
+.browse-mods .mod-item {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+
+/* filtered mod item: IMAGE */
+.browse-mods .cover {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+.browse-mods .cover img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+/* pictograms about difficulty/features of the modification */
+.browse-mods .mod-item .metadata {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    background: linear-gradient(0deg, rgba(41, 41, 41, 0) 0%, rgb(41, 41, 41) 100%);
+}
+.browse-mods .mod-item .metadata .left-side {
+    display: flex;
+}
+/* icons about mod's difficulty and features which are placed right on the mod's item image */
+.browse-mods .mod-item .metadata span {
+    font-size: 16px;
+    text-shadow: 0.5px 0.5px 1px black;
+}
+
+
+
+/* a filtered mod item: a CONTAINER for some info under the image */
+.browse-mods .mod-item .info
+{
+    margin-top: 10px;
+}
+/* mod's name */
+.browse-mods .mod-item .title {
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+/* container for the basic game name + icon */
+.browse-mods .mod-item .subinfo {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    font-family: "Proxima Nova", sans-serif;
+    color: #797979;
+    margin-top: 5px;
+}
+/* basic game name icon */
+.browse-mods .mod-item .subinfo img {
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-right: 5px;
+}
+
+
+
