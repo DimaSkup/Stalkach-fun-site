@@ -26,7 +26,7 @@ class IndexController extends Controller
 
     public function components(Request $request)
     {
-        return view('_components');
+        return view('components._components');
     }
 
     public function template($tempKey)
@@ -40,4 +40,9 @@ class IndexController extends Controller
         Session::put('locale', $locale);
         return redirect()->back();
     }
+
+    public function grid()
+	{
+		return view('grid');
+	}
 }

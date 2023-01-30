@@ -35,6 +35,7 @@ use App\Http\Controllers\Patterns\PatternsController;
 // -----------------------------------------
 //          DEV ROUTES
 // -----------------------------------------
+Route::get('/grid', [IndexController::class, 'grid'])->name('grid');
 Route::get('/component', [IndexController::class, 'components'])->name('components');
 Route::get('/template/{tempKey}', [IndexController::class, 'template'])->name('template');
 Route::get('error', [IndexController::class, 'error'])->name('error');
