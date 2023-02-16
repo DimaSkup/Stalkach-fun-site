@@ -19,8 +19,8 @@ class User extends Authenticatable
     use HasFactory;
     use HasImages;
 
-    public const IMAGE_TYPE_ALL = 'user_images';           // represents all the user's images
-    public const IMAGE_TYPE_AVATAR = 'user_image_avatar';  // user's avatars
+    public const IMAGE_TYPE_USER_ALL = 'user_images';           // represents all the user's images
+    public const IMAGE_TYPE_USER_AVATAR = 'user_image_avatar';  // user's avatars
 
     /**
      * The attributes that are mass assignable.
@@ -90,13 +90,18 @@ class User extends Authenticatable
 	// returns a default path to the model images directory
 	public static function getPathToImagesDir(): string
 	{
-		return Utils::getPathToDirByFileType(self::IMAGE_TYPE_ALL);
+		return Utils::getPathToDirByFileType(self::IMAGE_TYPE_USER_ALL);
+	}
+
+	public static function getAvatarImageTypeName(): string
+	{
+		return self::IMAGE_TYPE_USER_AVATAR;
 	}
 
 	// returns a path to the user's avatar image
 	public function getAvatarAttribute(): string
 	{
-		return $this->getImageUrlByType(self::IMAGE_TYPE_AVATAR);
+		return $this->getImageUrlByType(self::getAvatarImageTypeName());
 	}
 
 
@@ -112,6 +117,6 @@ class User extends Authenticatable
 	// sets a main image for this modification
 	public function setAvatarAttribute(HttpFile $image): void
 	{
-		$this->setImageHelper($image, self::IMAGE_TYPE_AVATAR);
+		$this->setImageHelper($image, self::getAvatarImageTypeName());
 	}
 }

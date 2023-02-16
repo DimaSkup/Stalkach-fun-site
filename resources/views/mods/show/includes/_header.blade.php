@@ -9,7 +9,7 @@
 
 <div class="mod-header">
     {{-- background images which are shown according to the carousel --}}
-    @include ('mods.show.includes._show_mod_header_background_images')
+    @include ('mods.show.includes._header_background_images')
 
     {{-- some common info about the mod + a download links list --}}
     <div class="header-content">
@@ -20,10 +20,10 @@
         </button>
 
         {{-- metadata, download/upload links --}}
-        @include ('mods.show.includes._show_mod_header_left_side', ['downloadSourceFullNames' => $downloadSourceFullNames])
+        @include ('mods.show.includes._header_left_side', ['downloadSourceFullNames' => $downloadSourceFullNames])
 
         {{-- the current mod stats; a carousel --}}
-        @include ('mods.show.includes._show_mod_header_right_side')
+        @include ('mods.show.includes._header_right_side')
 
     </div>
 </div>

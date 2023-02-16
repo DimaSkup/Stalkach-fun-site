@@ -49,7 +49,6 @@ trait HasImages
 		// use last() because if we for example changed a main image we want to use
 		// this last image BUT not the previous one
     	$fileModel = $this->files()->where('type', $type)->get()->last();
-
         return ($fileModel) ? $fileModel->file_url : "there is no image";
     }
 

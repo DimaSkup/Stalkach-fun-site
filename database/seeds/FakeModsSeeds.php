@@ -72,13 +72,16 @@ class FakeModsSeeds extends Seeder
             $newMod->tags = $modData['tags'];                                      // relate tags to this modification
             $this->relateFakeImagesTo($newMod, $mainImageFilename, $screenshotsCount);   // relate images to this modification
             $this->relateFakeModReviewsTo($newMod);                               // relate mod reviews to this modification
-            //$this->relateFakeVideosToModel($newMod, $trailerLink, $reviewLink);   // make relations between videos and this modification
+            $this->relateFakeVideosToModel($newMod, $trailerLink, $reviewLink);   // make relations between videos and this modification
 
             $newMod->update(); // after all we need to update this new mod
 
-            // ATTENTION: DROP IT LATER
-            //if ($index == 3)
-            //   break;
+
+			dump("Seed: modification #" . $index);
+
+
+			// ATTENTION: DROP IT LATER
+			if ($index == 3) break;
         }
     } // run()
 

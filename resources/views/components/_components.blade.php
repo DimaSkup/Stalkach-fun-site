@@ -67,7 +67,7 @@
     use Illuminate\Support\Facades\Storage;
     $imgLinks = [];
 
-    for($i = 1; $i < 7; $i++)
+    for($i = 1; $i < 9; $i++)
     {
         $imgLinks[] = Storage::url("components/" . $i . ".jpg");
     }

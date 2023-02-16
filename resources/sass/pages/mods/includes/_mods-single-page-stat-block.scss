@@ -1,0 +1,20 @@
+.stat-block {
+  padding: 0 20px;
+  text-align: center;
+
+  span {
+    font-size: 20px;
+    display: block;
+  }
+
+  small {
+    display: block;
+    color: $navigation-color;
+  }
+
+  b {
+    font-weight: 500;
+    text-shadow: $primary 0 0 4px;
+    color: $primary;
+  }
+}

@@ -1,0 +1,80 @@
+//
+// SECTION: changelog-section of the mod's navigation menu
+//
+.changelog-wrapper {
+  p {
+    font-weight: 300;
+  }
+
+  .timeline {
+    position: relative;
+    padding: 40px;
+    margin-left: 160px;
+    border-left: 4px solid $primary;
+    background: #1d1c1c;
+    font-family: $navigation-font-family;
+    font-weight: 100;
+    font-size: 1.03em;
+    font-style: normal;
+    line-height: 1.4em;
+    list-style: none;
+    text-align: left;
+
+    h1 {
+      font-family: $navigation-font-family;
+      letter-spacing: 1.5px;
+      font-weight: 100;
+      font-size: 1.4em;
+    }
+
+    h2, h3 {
+      margin-top: 0;
+      font-family: $navigation-font-family;
+      letter-spacing: 1.5px;
+      font-weight: 400;
+      font-size: 1.4em;
+    }
+
+    .event {
+      border-bottom: 1px dashed $hr-color;
+      padding-bottom: (40px * 0.5);
+      margin-bottom: 40px;
+      position: relative;
+
+
+      &:last-of-type {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        border: none;
+      }
+
+      &:before, &:after {
+        position: absolute;
+        display: block;
+        top: 0;
+      }
+
+      &:before {
+        width: 120px;
+        left: -200px;
+        color: $secondary;
+        content: attr(data-date);
+        text-align: right;
+        font-weight: 100;
+        font-size: 0.9em;
+        font-family: $navigation-font-family;
+      }
+
+      &:after {
+        box-shadow: 0 0 0 4px $primary;
+        background: $background;
+        left: -48px;
+        border-radius: 50%;
+        height: 11px;
+        width: 11px;
+        content: "";
+        top: 5px;
+      }
+    }
+  }
+}

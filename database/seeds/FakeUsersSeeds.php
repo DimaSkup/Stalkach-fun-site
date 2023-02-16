@@ -32,16 +32,17 @@ class FakeUsersSeeds extends Seeder
 
 	// objects for work with files and the filesystem
 	private FileManager $fileManager;            // for work with files and filesystem
-	private ImageUploader $imageUploader;        // for uploading of the images
+	//private ImageUploader $imageUploader;        // for uploading of the images
 
     public function __construct()
 	{
 		// initialize the file manager and the image uploader object to upload fake images
 		$this->fileManager = new LocalFileManager();
-		$this->imageUploader = new ImageUploader($this->fileManager, new ImageEditor(), new ImageChecker());
+		//$this->imageUploader = new ImageUploader($this->fileManager, new ImageEditor(), new ImageChecker());
 
 
-		$this->avatarsDirPath = Utils::getFileTypeConfig(User::IMAGE_TYPE_AVATAR)['fake'];         // get a path to fake avatars directory
+		$userAvatarConfig = Utils::getFileTypeConfig(User::getAvatarImageTypeName());
+		$this->avatarsDirPath = $userAvatarConfig['fake'];                                         // get a path to fake avatars directory
 		$this->avatarsPathsArray = Storage::disk('storage_root')->allFiles($this->avatarsDirPath); // get an array of paths to fake avatars
 	}
 
@@ -65,13 +66,12 @@ class FakeUsersSeeds extends Seeder
     // makes a relation between the user and some fake avatar image
     private function relateFakeAvatarTo(Model $user): void
 	{
-		$this->fileManager->setDisk('storage_root');       // because we need fake files we use the "storage_root" disk
-		$randomAvatarPath = Arr::random($this->avatarsPathsArray);
+		$this->fileManager->setDisk('storage_root');                // because we need fake files we use the "storage_root" disk
+		$randomAvatarPath = Arr::random($this->avatarsPathsArray);  // get random path
 
-		$avatarImageFile = $this->fileManager->getFileByStoragePath($randomAvatarPath);
-		$user->avatar = $avatarImageFile;                  // relate the avatar image to the user
+		$user->avatar = $this->fileManager->getFileByStoragePath($randomAvatarPath); // relate the avatar image to the user
 
-		$this->fileManager->setDisk('public');             // set the file manager to the default disk state
+		$this->fileManager->setDisk('public');                      // set the file manager to the default disk state
 	}
 }
 

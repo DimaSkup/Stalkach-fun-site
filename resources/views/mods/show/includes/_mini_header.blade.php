@@ -10,8 +10,8 @@
 <div class="mod-mini-header">
 
     {{-- common info: mod's avatar (main image), name, basic game, author name --}}
-    @include ('mods.show.includes._show_mod_mini_header_left_side')
+    @include ('mods.show.includes._mini_header_left_side')
 
     {{-- mod stats: rating, subscribers, and views --}}
-    @include ('mods.show.includes._show_mod_mini_header_right_side')
+    @include ('mods.show.includes._mini_header_right_side')
 </div>

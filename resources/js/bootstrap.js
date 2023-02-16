@@ -13,7 +13,6 @@ import YouTubePlayer from 'youtube-player';
  */
 
 try {
-    window.$ = window.jQuery = require('jquery');
     window.mdb = require('mdb-ui-kit');
     window.Splide = Splide;
     window.YouTubePlayer = YouTubePlayer;

@@ -1,0 +1,15 @@
+// QNA-section of the mod's navigation menu
+
+.question-section {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.create-question {
+  margin-top: 40px;
+
+  .btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

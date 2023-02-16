@@ -39,7 +39,9 @@
 // New theme
 @import "style";
 
-// Pages
+// ---- PAGES: ---- //
+
+// posts
 @import "pages/posts/common";
 @import "pages/posts/blog";
 @import "pages/posts/casual";
@@ -48,8 +50,11 @@
 @import "pages/posts/guide";
 @import "pages/media";
 
-@import "pages/mods";
-@import "pages/mods-index";
+// mods
+@import "pages/mods/mods-single-page";
+@import "pages/mods/mods-index";
+
+// common
 @import "pages/errors";
 //@import "pages/login";
 //@import "pages/landing";

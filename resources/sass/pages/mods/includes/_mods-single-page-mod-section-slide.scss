@@ -1,0 +1,37 @@
+// when you go through the mod's navigation menu
+// you change mod's sections
+
+.mod-section-slide {
+  padding: 20px 20px 0;
+  font-size: 1.05rem;
+  line-height: 2;
+
+  p {
+    text-align: justify;
+  }
+
+  a {
+    @include anim-link
+  }
+
+  h2, h3 {
+    margin-top: 2em;
+    margin-bottom: 1em;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  img {
+    margin-bottom: 1em;
+  }
+
+  table {
+    width: 100%;
+  }
+}

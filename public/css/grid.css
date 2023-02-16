@@ -1,0 +1,120 @@
+main > article {
+    border: 2px solid #3a2d1b;
+    background-color: #8a6d3b;
+}
+
+/* components */
+.testimonial-grid {
+    display: grid;                                      /* run the grid */
+    gap: 1.5rem;                                        /* the gaps between blocks */
+    grid-auto-columns: 1fr;                             /* any column will be exactly 1fr in width */
+    grid-template-areas:
+      'one'
+      'two'
+      'three'
+      'four'
+      'five';
+
+    padding-block: 2rem;   /* wtf? */
+    width: min(95%, 70rem);
+    margin-inline: auto;
+}
+
+.testimonial {
+    font-size: 20px;
+    padding: 2rem;
+    border-radius: 0.5rem;
+}
+
+.testimonial:nth-child(1) {
+    grid-area: one;
+}
+
+.testimonial:nth-child(2) {
+    grid-area: two;
+}
+
+.testimonial:nth-child(3) {
+    grid-area: three;
+}
+
+.testimonial:nth-child(4) {
+    grid-area: four;
+}
+
+.testimonial:nth-child(5) {
+    grid-area: five;
+}
+
+@media (min-width: 30em) {
+    .testimonial-grid {
+        grid-template-areas:
+        'one one'
+        'two five'
+        'three five'
+        'four  five'
+    }
+}
+
+@media (min-width: 50em) {
+    .testimonial-grid {
+        grid-template-areas:
+        'one one two five'
+        'three four four five'
+    }
+
+
+
+    /* if we want to make some grid block to be 2 columns in width */
+    .grid-col-span-2 {
+        grid-column: span 2;
+    }
+
+
+
+    .testimonial-grid {
+        /*grid-template-columns: 100px 100px 100px 100px;   /*  we have 4 columns each of it has width 100px */
+        /*grid-template-columns: 25% 25% 25% 25% 25%;       /*  we have 5 columns each of it has width 25% of the screen */
+        /*grid-template-columns: 1fr 1fr 1fr;               /* fr - fraction: to divide blocks equally according to the container width. Ff we have 3 times 1fr we will have 3 columns with equal width (SCREEN_WIDTH / 3 = COLUMN_WIDTH) */
+        /*grid-template-columns: repeat(3, 100px);          /* make 3 columns of 100px width */
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+
+
+
+    .testimonial:last-child {
+        /*grid-column: 4;        /* this column will be drawn after the 4th gap */
+        grid-column-start: 4;    /* this column will be drawn EXACTLY after the 4th gap (will be exactly the 4th column) */
+        /*grid-row-start:    1;    /* this column will start at the first row */
+        /*grid-row-end:      3;    /* go up to the 3rd horizontal gap */
+        /*grid-row-end: span 2;    /* this block will be 2 rows in height (if you start at 1st row and go up to the 3rd row so "grid-row-end: 3" gives the same result */
+        /*grid-row: 1 / 3;         /* this column will start at 1st row and will end before the 3rd row */
+        grid-row: 1 / span 2;    /* go from 1st row and be 2 rows in height (grid-row: 1 / 3 -- the same) */
+    }
+
+}
+
+
+
+/* if we want to make the last grid block background to be red */
+/*
+.testimonial:last-child {
+    background: red !important;
+}
+*/
+
+/* to choose the third element in the .testimonial container (3rd element in DOM) */
+/*
+.testimonial:nth-child(3) {
+    background: red !important;
+}
+*/
+
+
+
+
+
+
+
+

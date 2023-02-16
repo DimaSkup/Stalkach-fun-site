@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
         arrows    : false,
     });
 
+
     const thumbnailsSlider = new Splide('.thumbnail-carousel', {
         perPage: 3,
         fixedWidth: 100,

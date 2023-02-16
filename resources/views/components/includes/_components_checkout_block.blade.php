@@ -6,6 +6,8 @@
 
 <div class="row-demo">
     <div class="col-demo">
+
+
         <b>Checkout block</b>
         <div class="s-card-grid">
             @foreach ($imgLinks as $key => $imageLink)
@@ -29,6 +31,8 @@
 
             @endforeach
         </div>
+
+
     </div>
 </div>
 

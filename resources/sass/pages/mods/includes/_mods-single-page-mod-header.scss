@@ -1,0 +1,132 @@
+@use "../../../components/mixins";
+
+// header is an upper block with data:
+// mod's name, download links, background image, mod's stats
+.mod-header {
+  z-index: 2;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  height: 450px;
+  overflow: hidden;
+
+
+  // container for a carousel with the mod's screenshots/videos (big background images)
+  .main-carousel {
+    background-color: $background;
+    position: absolute;
+    width: 100%;
+    top: 0;
+
+    .splide__slide {
+      height: 450px;
+
+      img, video {
+        width: 100%;
+        height: 450px;
+        object-fit: cover;
+      }
+    }
+  }
+
+  // a little slider with changing of the mod's screenshots/videos
+  .thumbnail-carousel {
+    width: 320px;
+
+    // a slide of the slider
+    .splide__slide {
+      opacity: 0.6;
+      transition: .2s;
+
+      &.is-active {
+        opacity: 1;
+      }
+    }
+
+    // the left/right button of the slider
+    .splide__arrow {
+      opacity: 1;
+
+      &--prev {
+        left: -13px;
+      }
+      &--next {
+        right: -13px;
+      }
+
+      svg {
+        fill: $background;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // A CONTAINER WHICH HAS:
+  //  a button for maximizing some screenshot image;
+  //  right side: download links;
+  //  left side: mod's stats, mini-carousel
+  .header-content {
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 40px;
+
+    @media (max-width: 50em)
+    {
+      align-items: center;
+    }
+
+    // contains blocks with a rating/subs/view count
+    .stat-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 5px;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg,
+              rgba(41 41 41 / 0) 0%,
+              rgba(41 41 41 / 0.9) 13%,
+              rgba(41 41 41 / 0.9) 87%,
+              rgba(41 41 41 / 0) 100%
+      );
+    }
+
+    // styles for the block with download links
+    .links-block {
+      display: flex;
+
+      .download-link {
+        font-weight: 600;
+      }
+    }
+
+
+
+    // a button for maximizing some screenshot image
+    #open-lightbox {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+    }
+  }
+
+  @include mixins.max-md {
+    .header-content {
+      flex-direction: column;
+      align-items: center;
+
+      #open-lightbox {
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+} // .mod-header
+

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\Utils;
 use App\Models\Traits\HasImages;
 use RuntimeException;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -54,12 +55,18 @@ class FileModel extends Model
 	// Get the url of the file depending on its storage format
     public function getFileUrlAttribute(): string
     {
+
         if ($this->url) {
             return $this->url;
         }
 
+       // Utils::dd($this->type);
+		if ($this->type === 'user_image_avatar')
+			Utils::dd("KEK");
+
         $fileUrl = $this->fileInStorage->fileUrl ?? null;
         if ($fileUrl) {
+
             return $fileUrl;
         }
 

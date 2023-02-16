@@ -86,7 +86,7 @@ class File extends Model
 		{
 			$file->original_name = $uploadedFile->getClientOriginalName();
 			$file->name = $uploadedFile->hashName();
-			$uploadedFile->storeAs($path ?? null, $file->name, $file->disk); // store the file
+			$fileUrl = $uploadedFile->storeAs($path ?? null, $file->name, $file->disk); // store the file
 		} else // this file is already stored
 		{
 			$file->original_name = $uploadedFile->getBasename();

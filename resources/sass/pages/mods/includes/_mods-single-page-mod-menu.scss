@@ -1,0 +1,54 @@
+// modification navigation bar;
+// (the menu under the mod's header)
+
+.mod-menu {
+  position: sticky;
+  top: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background: $background;
+  box-shadow: 0 5px 5px -4px rgba(0,0,0,0.5);
+  z-index: 1;
+
+  & > a {
+    padding: 20px 0;
+    width: 100%;
+    color: $navigation-color;
+    transition: .5s;
+    border-bottom: 3px solid transparent;
+
+    .nav-wrapper {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: $navigation-font-family;
+      font-weight: 700;
+      text-transform: uppercase;
+
+      & > span {
+        margin-right: 10px;
+      }
+
+      &:last-child {
+        margin-right: 0;
+        border-right: 1px solid $hr-color;
+      }
+    }
+
+    &:last-of-type .nav-wrapper:last-child {
+      border-right: 1px solid transparent;
+    }
+
+    &.active {
+      border-bottom: 3px solid $primary;
+      color: $primary;
+    }
+
+    &:hover {
+      border-bottom: 3px solid $navigation-hover-color;
+      color: $navigation-hover-color;
+    }
+  }
+}

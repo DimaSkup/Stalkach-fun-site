@@ -1,0 +1,66 @@
+// STYLES FOR A SINGLE MOD PAGE
+@use "../../components/mixins";
+
+
+// styles for the main section
+.mod {
+  position: relative;
+  padding-bottom: 40px;
+  background: $gradient-background;
+
+
+  // styles for the mod-header block
+  @import "./includes/mods-single-page-mod-header";
+
+  // a block with rating/subscribers/views data;
+  // used both in the .mod-header and .mod-mini-header blocks
+  @import "./includes/mods-single-page-stat-block";
+
+  // styles for the stick header
+  @import "./includes/mods-single-page-mod-mini-header";
+
+  // modification navigation bar;
+  // (the menu under the mod's header)
+  @import "./includes/mods-single-page-mod-menu";
+
+  // when you go through the mod's navigation menu you change mod's sections
+  @import "./includes/mods-single-page-mod-section-slide";
+
+  // MENU SECTION: QNA-section of the mod's navigation menu
+  @import "./includes/_mods-single-page-QNA-section";
+
+  // MENU SECTION: changelog-section of the mod's navigation menu
+  @import "./includes/_mods-single-page-changelog";
+
+  // MENU SECTION: a section with reviews by users to this modification
+  @import "./includes/_mods-single-page-reviews";
+
+
+  //
+  // MIXINS
+  //
+  @include mixins.max-md {
+    h1 {
+      text-align: center;
+    }
+
+    .links-block, .meta-block {
+      justify-content: center;
+    }
+
+    // hide a mini-carousel
+    .thumbnail-carousel {
+      display: none;
+    }
+  }
+
+  @include mixins.max-lg {
+    .mod-menu .title {
+      display: none;
+    }
+  }
+} // .mod
+
+footer {
+  margin-top: 0;
+}
