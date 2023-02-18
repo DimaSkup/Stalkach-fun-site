@@ -79,6 +79,8 @@ class ModsController extends Controller
     	else
     		$pathToShowTemplate = "mods.show.show"; // show a usual page of a single modification
 
+
+
         return view($pathToShowTemplate)
             ->with('mod', $mod);
     }

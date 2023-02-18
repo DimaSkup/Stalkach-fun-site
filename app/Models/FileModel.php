@@ -60,9 +60,6 @@ class FileModel extends Model
             return $this->url;
         }
 
-       // Utils::dd($this->type);
-		if ($this->type === 'user_image_avatar')
-			Utils::dd("KEK");
 
         $fileUrl = $this->fileInStorage->fileUrl ?? null;
         if ($fileUrl) {

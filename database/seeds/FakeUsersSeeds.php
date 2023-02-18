@@ -57,22 +57,9 @@ class FakeUsersSeeds extends Seeder
                 'is_admin' => $userData['isAdmin'] ?? false,               // define if this user is an administrator or not
             ]);
 
-			$this->relateFakeAvatarTo($user);                              // relate an avatar image to this user
+			$user->avatar = User::factory()->getRandomAvatarImageFile();   // relate an avatar image to this user
         }
-
     }
-
-
-    // makes a relation between the user and some fake avatar image
-    private function relateFakeAvatarTo(Model $user): void
-	{
-		$this->fileManager->setDisk('storage_root');                // because we need fake files we use the "storage_root" disk
-		$randomAvatarPath = Arr::random($this->avatarsPathsArray);  // get random path
-
-		$user->avatar = $this->fileManager->getFileByStoragePath($randomAvatarPath); // relate the avatar image to the user
-
-		$this->fileManager->setDisk('public');                      // set the file manager to the default disk state
-	}
 }
 
 

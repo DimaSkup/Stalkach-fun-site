@@ -81,7 +81,7 @@ class ModReviewFactoryHelper
 	{
 		if ($authorId === true)  // if we want to relate a new user as an author
 		{
-			$this->modReview->author = User::factory()->create();
+			$this->modReview->author = User::factory()->getModel();
 		}
 		else if ($authorId > 0)  // else we have some user's id
 		{

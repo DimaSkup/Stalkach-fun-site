@@ -265,7 +265,7 @@ class Mod extends Model
     // returns an id of the review video on YouTube
     public function getReviewVideoIdAttribute(): string
     {
-        return $this->attributes['review_video_id'];
+        return $this->attributes['review_video_id'] ?? "no_review_video_link";
     }
 
     // returns a full url to the trailer video on YouTube
