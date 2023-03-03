@@ -8,13 +8,6 @@
     </p>
 
 
-    <div>
-        <h2>Screenshots:</h2>
-        @foreach ($mod->screenshots as $screenshotLink)
-            <img src="{{ $screenshotLink }}" alt="description_screenshot">
-        @endforeach
-    </div>
-
 </li>
 
 

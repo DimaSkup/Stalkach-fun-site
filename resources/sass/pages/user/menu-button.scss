@@ -1,0 +1,33 @@
+
+/* для випадаючого меню (drop-down menu) */
+.user-dropdown-menu {
+    background: none;
+}
+
+.user-dropdown-menu > .title {
+    color: white;
+}
+
+.user-dropdown-menu.open
+{
+    z-index: 100;
+    margin-top: 50px;
+    background: white;
+    color: black;
+}
+
+.user-dropdown-menu.open >.user-dropdown-menu-elem > a {
+    color: black;
+}
+
+.user-dropdown-menu > .user-dropdown-menu-content {
+    display: none;
+}
+
+.user-dropdown-menu.open > .user-dropdown-menu-content {
+    display: block;
+}
+
+.user-dropdown-menu:hover >.user-dropdown-menu-elem > a {
+    color: black;
+}

@@ -7,12 +7,15 @@ use App\Http\Requests\Mod\UpdateRequest;
 use App\Models\Mod;
 use App\Models\Repository\ModRepository;
 use App\Models\Tag;
+
 use App\Service\ImageUploader;
 use App\Service\YouTubeVideoService;
 use Illuminate\Contracts\View\View;
+
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
@@ -91,7 +94,8 @@ class ModsController extends Controller
      * @param  Mod  $mod
      * @return View
      */
-    public function edit(Mod $mod)    {
+    public function edit(Mod $mod): View
+	{
         //$modification = Mods::where('slug', $slug)->first();
 
         return view('mods.edit.edit')

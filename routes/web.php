@@ -1,12 +1,16 @@
 <?php
 
 use App\Http\Controllers\DocumentationController;
+use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Http\Middleware\RedirectIfNotCurrentUser;
 use Illuminate\Support\Facades\Route;
 
 // ----------------------------------
 //        Controllers routes
 // ----------------------------------
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserAvatarController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ModsController;
 use App\Http\Controllers\PostCategoryController;
@@ -46,6 +50,29 @@ Route::get('error', [IndexController::class, 'error'])->name('error');
 Route::get('/', [IndexController::class , 'index'])->name('home');
 Route::get('/language/{locale}', [IndexController::class, 'language'])->name('language');
 Route::get('search', [SearchController::class, 'searchForm'])->name('search');
+
+
+// -----------------------------------------
+//          USER ROUTES
+// -----------------------------------------
+Route::group(['prefix' => 'user'], static function ($route) {
+	Route::middleware(['auth'])->group(static function($route) {
+
+		$route->get('create', [UserController::class, 'create'])->name('user.create');
+		$route->post('/store/', [UserController::class, 'store'])->name('user.store');
+		$route->get('/edit/{user:id}', [UserController::class, 'edit'])
+			->middleware(RedirectIfNotCurrentUser::class)
+			->name('user.edit');
+		$route->put('/update/{user:id}', [UserController::class, 'update'])->name('user.update');
+		$route->put('/avatar/update/{user:id}', [UserAvatarController::class, 'update'])->name('user.avatar.update');
+
+	});
+
+	// dev routes
+	$route->get('/show/{user:id}', [UserController::class, 'show'])->name('user.show');
+	$route->get('/list', [UserController::class, 'userList'])->name('user.list');
+});
+
 
 // -----------------------------------------
 //          POSTS ROUTES

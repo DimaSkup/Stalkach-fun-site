@@ -22,6 +22,7 @@ class UserAuthentication
             return $next($request);
         }
 
+
         return new RedirectResponse(route('login'));
     }
 }

@@ -72,7 +72,8 @@ return [
         ],
     ],
 
-    // necessary parameters for image files
+
+    // common necessary parameters for image files
     'images' => [
         'params' => [
             'max' => [
@@ -93,6 +94,16 @@ return [
             ]
         ]
     ],
+
+
+	'user' => [
+		'image' => [
+			'avatar' => [
+				'width' => 640,
+				'height' => 640,
+			],
+		],
+	],
 
     'youtube' => [
         'url' => "https://www.youtube-nocookie.com/embed/%s",
