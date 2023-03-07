@@ -30,20 +30,9 @@ class FakeUsersSeeds extends Seeder
     public string $avatarsDirPath;               // a path to fake avatars directory
 	public array $avatarsPathsArray;             // an array of paths to fake avatars
 
-	// objects for work with files and the filesystem
-	private FileManager $fileManager;            // for work with files and filesystem
-	//private ImageUploader $imageUploader;        // for uploading of the images
 
     public function __construct()
 	{
-		// initialize the file manager and the image uploader object to upload fake images
-		$this->fileManager = new LocalFileManager();
-		//$this->imageUploader = new ImageUploader($this->fileManager, new ImageEditor(), new ImageChecker());
-
-
-		$userAvatarConfig = Utils::getFileTypeConfig(User::getAvatarImageTypeName());
-		$this->avatarsDirPath = $userAvatarConfig['fake'];                                         // get a path to fake avatars directory
-		$this->avatarsPathsArray = Storage::disk('storage_root')->allFiles($this->avatarsDirPath); // get an array of paths to fake avatars
 	}
 
     // Run the database seeds.

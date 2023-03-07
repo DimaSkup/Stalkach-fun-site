@@ -14,7 +14,6 @@ use Illuminate\Support\Str;
 class PostCategory extends Model
 {
     use HasFactory;
-    use HasImages;
 
     # images
     public const IMAGE_TYPE_BACKGROUND = 'post_category_image_background';

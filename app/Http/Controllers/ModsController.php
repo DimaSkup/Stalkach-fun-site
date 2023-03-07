@@ -153,10 +153,10 @@ class ModsController extends Controller
         try
         {
             $validatedData = $request->validated();
-            Utils::dd($validatedData);
+           // Utils::dd($validatedData);
 
-            $modDataCollection = new Collection($validatedData['request']);
-            $newMod = $modRepository->create($modDataCollection);
+            //$modDataCollection = new Collection($validatedData['request']);
+            $newMod = $modRepository->create($request);
 
             if (!$newMod) // if something went wrong
             {

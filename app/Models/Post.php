@@ -17,7 +17,6 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 class Post extends Model
 {
     use HasFactory;
-    use HasImages;
     use HasVideos;
 
     public const DEFAULT_IMAGE_TYPE = 'post_image_main';

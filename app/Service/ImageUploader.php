@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Helpers\FileManager;
 use App\Helpers\Traits\DevUtils;
+use App\Helpers\Utils;
 use App\Models\User;
 use Illuminate\Http\File;
 use Illuminate\Http\UploadedFile;
@@ -15,13 +16,11 @@ class ImageUploader
     private ImageEditor $imageEditor;    // for editing images (resizing, etc.)
     private ImageChecker $imageChecker;  // for checking if an image resource is correct
 
-    public function __construct(FileManager $fileManager,
-                                ImageEditor $imageEditor,
-                                ImageChecker $imageChecker)
+    public function __construct(FileManager $fileManager)
     {
         $this->fileManager = $fileManager;
-        $this->imageEditor = $imageEditor;
-        $this->imageChecker = $imageChecker;
+        $this->imageEditor = new ImageEditor;
+        $this->imageChecker = new ImageChecker;
     }
 
     // uploads an image into the local disk;

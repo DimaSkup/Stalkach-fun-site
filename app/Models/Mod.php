@@ -3,18 +3,21 @@
 namespace App\Models;
 
 use App\Helpers\Utils;
-use App\Models\Traits\HasImages;
+//use App\Models\Traits\HasImages;
 use App\Models\Traits\HasVideos;
 use \Illuminate\Http\File as HttpFile;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Service\Image\ModelImageService;
 
 class Mod extends Model
 {
+	private ?ModelImageService $modelImageService = null;
+
     use HasFactory;
-    use HasImages;
+    //use HasImages;
     use HasVideos;
 
     public const IMAGE_TYPE_MAIN = 'mod_image_main';
@@ -151,6 +154,8 @@ class Mod extends Model
 
     public function __construct(array $attributes = [])
     {
+    	$this->modelImageService = new ModelImageService($this);
+
         parent::__construct($attributes);
     }
 
@@ -291,39 +296,39 @@ class Mod extends Model
 
     public function getMainImageAttribute(): string
     {
-        return $this->getImageUrlByType(self::IMAGE_TYPE_MAIN);
+        return $this->modelImageService->getImageUrlByType(self::IMAGE_TYPE_MAIN);
     }
 
     public function getScreenshotsAttribute(): Collection
     {
-        return $this->getImagesUrlsCollectionByType(self::IMAGE_TYPE_SCREENSHOTS);
+        return $this->modelImageService->getImagesUrlsCollectionByType(self::IMAGE_TYPE_SCREENSHOTS);
     }
 
     // return a preview image for the trailer YouTube video
     public function getTrailerVideoPreviewImageAttribute(): string
     {
-        return $this->getImageUrlByType(self::IMAGE_TYPE_TRAILER);
+        return $this->modelImageService->getImageUrlByType(self::IMAGE_TYPE_TRAILER);
     }
 
     // return a preview image for the review YouTube video
     public function getReviewVideoPreviewImageAttribute(): string
     {
-        return $this->getImageUrlByType(self::IMAGE_TYPE_REVIEW);
+        return $this->modelImageService->getImageUrlByType(self::IMAGE_TYPE_REVIEW);
     }
 
     public function getBoxartImageAttribute(): string
     {
-        return $this->getImageUrlByType(self::IMAGE_TYPE_BOXART);
+        return $this->modelImageService->getImageUrlByType(self::IMAGE_TYPE_BOXART);
     }
 
     public function getBackgroundImageAttribute(): string
     {
-        return $this->getImageUrlByType(self::IMAGE_TYPE_BACKGROUND);
+        return $this->modelImageService->getImageUrlByType(self::IMAGE_TYPE_BACKGROUND);
     }
 
     public function getGalleryVideoImageAttribute(): string
     {
-        return $this->getImageUrlByType(self::IMAGE_TYPE_GALLERY_VIDEO);
+        return $this->modelImageService->getImageUrlByType(self::IMAGE_TYPE_GALLERY_VIDEO);
     }
 
     // returns a path to the model images directory
@@ -415,7 +420,7 @@ class Mod extends Model
 
     public function setTrailerVideoPreviewImageAttribute(HttpFile $previewImage): void
     {
-        $this->setImageHelper($previewImage, self::IMAGE_TYPE_TRAILER);
+        $this->modelImageService->setImage($previewImage, self::IMAGE_TYPE_TRAILER);
     }
 
     public function setReviewVideoIdAttribute(string $reviewVideoId): void
@@ -425,18 +430,18 @@ class Mod extends Model
 
     public function setReviewVideoPreviewImageAttribute(HttpFile $previewImage): void
     {
-        $this->setImageHelper($previewImage, self::IMAGE_TYPE_REVIEW);
+        $this->modelImageService->setImage($previewImage, self::IMAGE_TYPE_REVIEW);
     }
 
     // create a relation between the gallery video and this modification object
     public function setGalleryVideoAttribute(HttpFile $galleryVideoFile): void
     {
-        $this->setImageHelper($galleryVideoFile, self::VIDEO_TYPE_GALLERY);
+        $this->modelImageService->setImage($galleryVideoFile, self::VIDEO_TYPE_GALLERY);
     }
 
     public function setGalleryVideoImageAttribute(HttpFile $image): void
     {
-        $this->setImageHelper($image, self::IMAGE_TYPE_GALLERY_VIDEO);
+        $this->modelImageService->setImage($image, self::IMAGE_TYPE_GALLERY_VIDEO);
     }
 
 
@@ -445,7 +450,7 @@ class Mod extends Model
     // sets a main image for this modification
     public function setMainImageAttribute(HttpFile $image): void
     {
-        $this->setImageHelper($image, self::IMAGE_TYPE_MAIN);
+        $this->modelImageService->setImage($image, self::IMAGE_TYPE_MAIN);
     }
 
     // sets screenshots for this modification
@@ -453,20 +458,20 @@ class Mod extends Model
     {
         foreach ($images as $image) // go through each screenshot image
         {
-            $this->setImageHelper($image, self::IMAGE_TYPE_SCREENSHOTS);
+            $this->modelImageService->setImage($image, self::IMAGE_TYPE_SCREENSHOTS);
         }
     }
 
     // sets a boxart image for this modification
     public function setBoxartImageAttribute(HttpFile $image): void
     {
-        $this->setImageHelper($image, self::IMAGE_TYPE_BOXART);
+        $this->modelImageService->setImage($image, self::IMAGE_TYPE_BOXART);
     }
 
     // sets a background image for this modification
     public function setBackgroundImageAttribute(HttpFile $image): void
     {
-        $this->setImageHelper($image, self::IMAGE_TYPE_BACKGROUND);
+        $this->modelImageService->setImage($image, self::IMAGE_TYPE_BACKGROUND);
     }
 
 } // class Mod

@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 class FileModel extends Model
 {
     use HasFactory;
-    use HasImages;
 
     public $uploadedFile;
     //public $fileInStorage;

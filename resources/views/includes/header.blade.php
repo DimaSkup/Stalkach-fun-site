@@ -12,5 +12,5 @@
 
 <div class="dropdown">
     @include('includes.language-switcher')
-    @include('includes.login-logout')
+    @include('includes.login-logout-and-user-menu')
 </div>

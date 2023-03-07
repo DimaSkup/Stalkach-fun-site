@@ -4,7 +4,7 @@ namespace App\Models;
 
 //use Database\Factories\UserFactory;
 use App\Helpers\Utils;
-use App\Models\Traits\HasImages;
+//use App\Models\Traits\HasImages;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -12,12 +12,15 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\File as HttpFile;
 use Illuminate\Notifications\Notifiable;
+use App\Service\Image\ModelImageService;
 
 class User extends Authenticatable
 {
+	private ?ModelImageService $modelImageService = null;
+
     use Notifiable;
     use HasFactory;
-    use HasImages;
+    //use HasImages;
 
     public const IMAGE_TYPE_USER_ALL = 'user_images';           // represents all the user's images
     public const IMAGE_TYPE_USER_AVATAR = 'user_image_avatar';  // user's avatars
@@ -53,6 +56,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+	public function __construct(array $attributes = [])
+	{
+		$this->modelImageService = new ModelImageService($this);
+
+		parent::__construct($attributes);
+	}
+
+
+
 
 	// ----------------------------------------------------------------------- //
 	//                            RELATIONS                                    //
@@ -101,7 +116,7 @@ class User extends Authenticatable
 	// returns a path to the user's avatar image
 	public function getAvatarAttribute(): string
 	{
-		return $this->getImageUrlByType(self::getAvatarImageTypeName());
+		return $this->modelImageService->getImageUrlByType(self::getAvatarImageTypeName());
 	}
 
 
@@ -117,6 +132,6 @@ class User extends Authenticatable
 	// sets a main image for this modification
 	public function setAvatarAttribute(HttpFile $image): void
 	{
-		$this->setImageHelper($image, self::getAvatarImageTypeName());
+		$this->modelImageService->setImage($image, self::getAvatarImageTypeName());
 	}
 }
